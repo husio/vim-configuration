@@ -1,0 +1,73 @@
+" {{{   gVim
+if has("gui_running")
+    set guioptions-=r
+    set guioptions-=L
+    set guioptions-=T
+    set guioptions-=m
+    "set guifont=Bitstream\ Vera\ Sans\ Mono\ 8
+    "set guifont=Monaco\ 9
+    "set guifont=Terminus\ 9
+    set guifont=Dina\ 10
+    set mousehide
+    "colorscheme vibrantink
+    colorscheme native
+endif 
+" }}}
+
+" {{{   console vim
+if !has("gui_running")
+    "colorscheme blueosx
+    set background=dark
+    colorscheme 256-candyblue
+endif
+" }}}
+
+" {{{ for 256 color terminals
+if (&term == 'xterm-color')
+    "set t_Co=256
+endif 
+
+if (&term == 'linux')
+    colorscheme desert
+    set background=dark
+endif
+" }}}
+
+" {{{ main configuration
+"set spelllang=pl
+"set spell
+"syntax on	
+set nocompatible	
+set nobackup			
+set ruler			
+set showcmd			
+set number			
+set hlsearch		
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab 
+set pastetoggle=<F11>		
+set autoindent
+set wildmode=list:longest,full
+"set completeopt=longest,menuone
+set enc=utf8 
+set textwidth=80
+set fileencodings=utf-8,latin2
+set foldmethod=marker
+"set cursorline
+" }}}
+
+" {{{ filetype configuration
+filetype on
+filetype plugin on
+filetype indent on
+
+" load plugins from file type name ftplugin subdirectory
+exec "source ". globpath(&rtp, "ftplugin/magic_ftplugin_load.vim")
+
+autocmd BufNewFile * startinsert
+
+autocmd BufReadPost PKGBUILD  set filetype=PKGBUILD
+autocmd BufRead,BufNewFile *.mkd set filetype=mkd
+" }}}

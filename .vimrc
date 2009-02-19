@@ -1,0 +1,1 @@
+/home/piotrek/.vim/vimrc
