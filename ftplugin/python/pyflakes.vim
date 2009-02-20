@@ -1,4 +1,7 @@
 function! Pyflakes()
+    " temporary change compiler
+    let l:last_compiler = b:current_compiler
+    compiler pyflakes
     make
     redraw
     try 
@@ -6,7 +9,7 @@ function! Pyflakes()
     catch E42
         echo "Pyflakes check: ok"
     endtry
+    exec "compiler ". l:last_compiler
 endfunction
 
-compiler pyflakes
 autocmd BufWritePost        *.py    call Pyflakes()

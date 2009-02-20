@@ -7,16 +7,18 @@ MAKE_ARG="$2"
 NOPASTE=nopaste
 TEMP_FILE="/tmp/runmake.tmp"
 
+APP_PATH=`echo $2 | sed -e 's@\(.*\)\/.*@\1@'`
+cd $APP_PATH
+
 if [ "$MAKE" == 'make' ]
 then
-    if [ -f 'Makefile' ] 
+    if ! [ -f 'Makefile' ] 
     then
-        MAKE_ARG=""
-    else
         # cut .c extension from MAKE_ARG
         MAKE_ARG_NAME=`echo $MAKE_ARG | sed "s/\(.*\)\.c/\1/"`
         MAKE="cc $MAKE_ARG -o $MAKE_ARG_NAME"
     fi
+    MAKE_ARG=""
 fi
 
 function info()
@@ -41,6 +43,7 @@ function runmake_make()
     info "out>"
     $MAKE $MAKE_ARG &> $TEMP_FILE
     cat $TEMP_FILE
+    echo
 }
 
 function runmake_info()

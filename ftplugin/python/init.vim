@@ -8,7 +8,7 @@ endfunction
 
 map <leader>init    :call InitInsert()<CR>
 
-compiler pyflakes
+compiler python
 
 let python_highlight_all = 1
 imap #enc   # -*- coding: utf-8 -*-
