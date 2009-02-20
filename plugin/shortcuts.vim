@@ -1,5 +1,12 @@
-map  ÿ      :silent! make<CR><C-l>:cc<CR>
-imap ÿ      <Esc>:silent! make<CR><C-l>:cc<CR>
+" tricky xmodmap change usage
+function! RunMake()
+    exec "silent ! xterm -e '~/.vim/sh/runmake.sh ". &makeprg ." ". expand("%:p") ."' &"
+endfunction
+
+map  «      :silent! make<CR><C-l>:cc<CR>
+imap «      <Esc>:silent! make<CR><C-l>:cc<CR>
+map  »      :call RunMake()<CR>
+imap »      <Esc>:call RunMake()<CR>
 
 map  <F12>  :silent! make<CR><C-l>:cc<CR>
 imap <F12>  <Esc>:silent! make<CR><C-l>:cc<CR>
