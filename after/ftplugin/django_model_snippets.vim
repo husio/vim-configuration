@@ -32,8 +32,8 @@ let cd = g:snip_elem_delim
 exec "Snippet mmodel class ".st.et."(models.Model):<CR>\"\"\"".st.et."\"\"\"<CR>".st.et." = ".st.et."<CR><CR>class Admin:<CR>pass<CR><CR>def __str__(self):<CR>return \"".st."s".et."\" % ".st."s:DjangoArgList(Count(@z, '%[^%]'))".et."<CR>".st.et
 exec "Snippet mauto models.AutoField(".st.et.")".st.et
 exec "Snippet mbool models.BooleanField()".st.et
-exec "Snippet mchar models.CharField(maxlength=".st."50".et.st.et.")".st.et
-exec "Snippet mcsi models.CommaSeparatedIntegerField(maxlength=".st."50".et.st.et.")".st.et
+exec "Snippet mchar models.CharField(max_length=".st."50".et.st.et.")".st.et
+exec "Snippet mcsi models.CommaSeparatedIntegerField(max_length=".st."50".et.st.et.")".st.et
 exec "Snippet mdate models.DateField(".st.et.")".st.et
 exec "Snippet mdatet models.DateTimeField(".st.et.")".st.et
 exec "Snippet memail models.EmailField(".st.et.")".st.et
