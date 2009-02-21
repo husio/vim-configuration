@@ -67,9 +67,9 @@ function! PyGetVariableInitializationFromVars(text)
     let et          = g:snip_end_tag
     let assert_vars = map(split(text), '"assert ".v:val." ".st.et')
     let assign_vars = map(split(text), '"self._".v:val." = ".v:val')
-    let assertions  = join(assert_vars, '\n'.indent)
+    "let assertions  = join(assert_vars, '\n'.indent)
     let assignments = join(assign_vars, '\n'.indent)
-    return assertions.'\n'.indent.assignments.'\n'.indent
+    return indent.assignments.'\n'.indent
 endfunction
 
 " Given a string containing a list of arguments (e.g. "one = 'test', *args,
@@ -116,7 +116,7 @@ let cd = g:snip_elem_delim
 " Note to users: The following method of defininf snippets is to allow for
 " changes to the default tags.
 " Feel free to define your own as so:
-"    Snippet mysnip This is the expansion text.<{}>
+"    Snippet mysnip This is the expansion text.
 " There is no need to use exec if you are happy to hardcode your own start and
 " end tags
 
@@ -129,8 +129,7 @@ exec "Snippet set def set_".st."name".et."(self, ".st."value".et."):
 
 " Functions and methods.
 exec "Snippet def def ".st."fname".et."(".st."args:PyCleanupArgs(@z)".et."):
-\<CR>\"\"\"
-\<CR>".st.et."
+\<CR>\"\"\"".st.et."
 \<CR>".st."args:PyGetDocstringFromArgs(@z)".et."\"\"\"
 \<CR>".st."pass".et."
 \<CR>".st.et
@@ -138,14 +137,11 @@ exec "Snippet cm ".st."class".et." = classmethod(".st."class".et.")<CR>".st.et
 
 " Class definition.
 exec "Snippet cl class ".st."ClassName".et."(".st."object".et."):
-\<CR>\"\"\"
-\<CR>This class represents ".st.et."
+\<CR>\"\"\"".st."ClassName".et." - ".st."description".et."
 \<CR>\"\"\"
 \<CR>
 \<CR>def __init__(self, ".st."args:PyCleanupArgs(@z)".et."):
-\<CR>\"\"\"
-\<CR>Constructor.
-\<CR>".st."args:PyGetDocstringFromArgs(@z)".et."\"\"\"
+\<CR>\"\"\"".st."args:PyGetDocstringFromArgs(@z)".et."\"\"\"
 \<CR>".st."args:PyGetVariableInitializationFromVars(@z)".et.st.et
 
 " Keywords
