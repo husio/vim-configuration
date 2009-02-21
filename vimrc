@@ -64,9 +64,6 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" load plugins from file type name ftplugin subdirectory
-exec "source ". globpath(&rtp, "ftplugin/magic_ftplugin_load.vim")
-
 autocmd BufNewFile * startinsert
 
 autocmd BufReadPost PKGBUILD  set filetype=PKGBUILD
