@@ -12,4 +12,3 @@ compiler python
 
 let python_highlight_all = 1
 imap #enc   # -*- coding: utf-8 -*-
-iab if __name__ == "__main__": if __name__ == "__main__":<CR><BS><Space><Space><Space>

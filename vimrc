@@ -9,9 +9,7 @@ if has("gui_running")
     "set guifont=Terminus\ 9
     "set guifont=Dina\ 10
     set mousehide
-    "colorscheme vibrantink
-    "colorscheme native
-    colorscheme vividchalk
+    colorscheme vexorian
 endif 
 " }}}
 
@@ -20,6 +18,7 @@ if !has("gui_running")
     "colorscheme blueosx
     set background=dark
     colorscheme 256-candyblue
+    colorscheme 256-grayvim
 endif
 " }}}
 
@@ -68,4 +67,10 @@ autocmd BufNewFile * startinsert
 
 autocmd BufReadPost PKGBUILD  set filetype=PKGBUILD
 autocmd BufRead,BufNewFile *.mkd set filetype=mkd
+" }}}
+
+" {{{ vim wiki
+let g:vimwiki_home = "~/.vimwiki/"
+let g:vimwiki_syntax = "default"
+let g:vimwiki_home_html = "~/vimwiki_html/"
 " }}}

@@ -14,6 +14,8 @@ if [ "$MAKE" == 'make' ]
 then
     if ! [ -f 'Makefile' ] 
     then
+        # not C source file - exit
+        [[ $MAKE_ARG_NAME = *.c ]] || exit 2
         # cut .c extension from MAKE_ARG
         MAKE_ARG_NAME=`echo $MAKE_ARG | sed "s/\(.*\)\.c/\1/"`
         MAKE="cc $MAKE_ARG -o $MAKE_ARG_NAME"
