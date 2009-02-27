@@ -1,6 +1,6 @@
 " tricky xmodmap change usage
 function! RunMake()
-    exec "silent ! xterm -e '~/.vim/sh/runmake.sh ". &makeprg ." ". expand("%:p") ."' &"
+    exec "silent ! xterm -e '~/.vim/sh/runmake.sh ". &makeprg ." \"". expand("%:p") ."\"' &"
 endfunction
 
 map  «      :silent! make<CR><C-l>:cc<CR>

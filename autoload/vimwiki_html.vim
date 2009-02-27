@@ -11,6 +11,19 @@ if exists("g:loaded_vimwiki_html_auto") || &cp
 endif
 let g:loaded_vimwiki_html_auto = 1
 
+" elements counter
+let b:vimwiki_section_counter = 0
+let b:vimwiki_section_class="cn"
+
+function! s:section_counter_get()
+    let b:vimwiki_section_counter += 1
+    return b:vimwiki_section_counter
+endfunction
+
+function! s:section_attr_get()
+    return ' class="'. b:vimwiki_section_class .'" id="'. s:section_counter_get() .'" '
+endfunction
+
 "" I do not want to redefine these functions. Really. I do not want them to be
 "" global too.
 function! s:msg(message) "{{{
@@ -98,6 +111,8 @@ function! s:get_html_header(title, charset) "{{{
 
   " if no g:vimwiki_html_header set up or error while reading template
   " file -- use default header.
+  call add(lines, '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"')
+  call add(lines, '    "http://www.w3.org/TR/html4/strict.dtd">')
   call add(lines, '<html>')
   call add(lines, '<head>')
   call add(lines, '<link rel="Stylesheet" type="text/css" href="style.css" />')
@@ -168,7 +183,7 @@ function! s:process_tag_code(line, code) "{{{
   let processed = 0
   if !code && a:line =~ '^{{{\s*$'
     let code = 1
-    call add(lines, "<code><pre>")
+    call add(lines, "<code><pre ". s:section_attr_get() .">")
     let processed = 1
   elseif code && a:line =~ '^}}}\s*$'
     let code = 0
@@ -187,7 +202,7 @@ function! s:process_tag_pre(line, pre) "{{{
   let processed = 0
   if a:line =~ '^\s\+[^[:blank:]*#]'
     if !pre
-      call add(lines, "<pre>")
+      call add(lines, "<pre". s:section_attr_get() .">")
       let pre = 1
     endif
     let processed = 1
@@ -247,7 +262,7 @@ endfunction "}}}
 function! s:process_tag_p(line) "{{{
   let lines = []
   if a:line =~ '^\S'
-    call add(lines, '<p>'.a:line.'</p>')
+    call add(lines, '<p '. s:section_attr_get() .'>'.a:line.'</p>')
     return [1, lines]
   endif
   return [0, lines]
@@ -257,22 +272,22 @@ function! s:process_tag_h(line) "{{{
   let line = a:line
   let processed = 0
   if a:line =~ '^!\{6}.*$'
-    let line = '<h6>'.strpart(a:line, 6).'</h6>'
+    let line = '<h6 '. s:section_attr_get() .'>'.strpart(a:line, 6).'</h6>'
     let processed = 1
   elseif a:line =~ '^!\{5}.*$'
-    let line = '<h5>'.strpart(a:line, 5).'</h5>'
+    let line = '<h5 '. s:section_attr_get() .'>'.strpart(a:line, 5).'</h5>'
     let processed = 1
   elseif a:line =~ '^!\{4}.*$'
-    let line = '<h4>'.strpart(a:line, 4).'</h4>'
+    let line = '<h4 '. s:section_attr_get() .'>'.strpart(a:line, 4).'</h4>'
     let processed = 1
   elseif a:line =~ '^!\{3}.*$'
-    let line = '<h3>'.strpart(a:line, 3).'</h3>'
+    let line = '<h3 '. s:section_attr_get() .'>'.strpart(a:line, 3).'</h3>'
     let processed = 1
   elseif a:line =~ '^!\{2}.*$'
-    let line = '<h2>'.strpart(a:line, 2).'</h2>'
+    let line = '<h2 '. s:section_attr_get() .'>'.strpart(a:line, 2).'</h2>'
     let processed = 1
   elseif a:line =~ '^!\{1}.*$'
-    let line = '<h1>'.strpart(a:line, 1).'</h1>'
+    let line = '<h1 '. s:section_attr_get() .'>'.strpart(a:line, 1).'</h1>'
     let processed = 1
   endif
   return [processed, line]
@@ -294,7 +309,7 @@ function! s:process_tag_table(line, table) "{{{
   let processed = 0
   if a:line =~ '^||.\+||.*'
     if !table
-      call add(lines, "<table>")
+      call add(lines, "<table ". s:section_attr_get() .">")
       let table = 1
     endif
     let processed = 1
