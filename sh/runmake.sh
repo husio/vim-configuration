@@ -1,18 +1,11 @@
 #!/bin/bash
 
-# begin settings
-
+# some settings
 [ $TERM ] || TERM=xterm
-NOPASTE=nopaste
-
-# end settings
-
-# $1 => make app
 MAKE="$1"
-# $2 => file name
 MAKE_ARG="$2"
-
-LOG_FILE="/tmp/runmake.tmp"
+NOPASTE=nopaste
+TEMP_FILE="/tmp/runmake.tmp"
 
 APP_PATH=`echo $2 | sed -e 's@\(.*\)\/.*@\1@'`
 cd $APP_PATH
@@ -40,7 +33,7 @@ function runmake_end()
 {
     info "out> "
     echo "quit"
-    [ -f $LOG_FILE ] && rm $LOG_FILE
+    [ -f $TEMP_FILE ] && rm $TEMP_FILE
     sleep 0.5
     exit 0
 }
@@ -50,8 +43,8 @@ function runmake_make()
     info "command: "
     echo "$MAKE $MAKE_ARG"
     info "out>"
-    $MAKE $MAKE_ARG &> $LOG_FILE
-    cat $LOG_FILE
+    $MAKE $MAKE_ARG &> $TEMP_FILE
+    cat $TEMP_FILE
     echo
 }
 
@@ -77,7 +70,7 @@ function runmake_loop()
             ;;
         p)
             info "\nout> nopaste url:  "
-            $NOPASTE < $LOG_FILE
+            $NOPASTE < $TEMP_FILE
             echo -ne "\n"
             ;;
         s)

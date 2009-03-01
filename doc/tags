@@ -26,7 +26,6 @@
 :Vimwiki2HTML	vimwiki.txt	/*:Vimwiki2HTML*
 :VimwikiAll2HTML	vimwiki.txt	/*:VimwikiAll2HTML*
 :VimwikiDeleteWord	vimwiki.txt	/*:VimwikiDeleteWord*
-:VimwikiExploreHome	vimwiki.txt	/*:VimwikiExploreHome*
 :VimwikiFollowWord	vimwiki.txt	/*:VimwikiFollowWord*
 :VimwikiGTDToggleItem	vimwiki.txt	/*:VimwikiGTDToggleItem*
 :VimwikiGoBackWord	vimwiki.txt	/*:VimwikiGoBackWord*
