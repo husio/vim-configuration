@@ -9,7 +9,7 @@ if has("gui_running")
     "set guifont=Terminus\ 9
     "set guifont=Dina\ 10
     set mousehide
-    colorscheme vexorian
+    colorscheme native
 endif 
 " }}}
 

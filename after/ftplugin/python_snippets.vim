@@ -196,3 +196,5 @@ exec "Snippet unittest if __name__ == '__main__':
 \<CR>
 \<CR>def runTest(self):
 \<CR>".st.et
+
+exec 'Snippet sensi #/usr/bin/env python<CR># -*- coding: utf-8 -*-<CR><CR>"""<CR>'.st.'opis'.et.'<CR>"""<CR><CR>__revision__ = "$Id$"<CR>'.st.et
