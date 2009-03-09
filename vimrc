@@ -68,9 +68,3 @@ autocmd BufNewFile * startinsert
 autocmd BufReadPost PKGBUILD  set filetype=PKGBUILD
 autocmd BufRead,BufNewFile *.mkd set filetype=mkd
 " }}}
-
-" {{{ vim wiki
-let g:vimwiki_home = "~/.vimwiki/"
-let g:vimwiki_syntax = "default"
-let g:vimwiki_home_html = "~/vimwiki_html/"
-" }}}
