@@ -8,8 +8,7 @@ imap «      <Esc>:silent! make<CR><C-l>:cc<CR>
 map  »      :call RunMake()<CR>
 imap »      <Esc>:call RunMake()<CR>
 
-map  <F12>  :silent! make<CR><C-l>:cc<CR>
-imap <F12>  <Esc>:silent! make<CR><C-l>:cc<CR>
+nmap <F12>  :call ManageSession()<CR>
 
 map  <F10>  :cn<CR>
 imap <F10>  <Esc>:cn<CR>
@@ -19,6 +18,7 @@ imap <F9>   <Esc>:TlistToggle<CR>
 
 imap <F8>   <Esc>:NERDTreeToggle<CR><Esc>
 map  <F8>   :NERDTreeToggle<CR><Esc>
+
 
 nmap     <C-t>          :tabnew<CR>
 nmap     <C-c>          :tabclose<CR>
