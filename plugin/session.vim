@@ -1,4 +1,5 @@
 let s:sessions_data_path = "~/.vim_sessions/"
+let s:session_menu_width = 24
 let s:session_menu_name = "SessionMenu_"
 
 
@@ -83,7 +84,7 @@ endfunction
 
 
 function! SessionManagerOpen()
-    exec "silent! ". 22 . " vne ". s:session_menu_name
+    exec "silent! ". s:session_menu_width . " vne ". s:session_menu_name
     setl noshowcmd
     setl noswapfile
     setl buftype=nofile
