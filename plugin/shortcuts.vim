@@ -8,7 +8,7 @@ imap «      <Esc>:silent! make<CR><C-l>:cc<CR>
 map  »      :call RunMake()<CR>
 imap »      <Esc>:call RunMake()<CR>
 
-nmap <F12>  :call ManageSession()<CR>
+nmap <F12>  :call SessionManagerToggle()<CR>
 
 map  <F10>  :cn<CR>
 imap <F10>  <Esc>:cn<CR>

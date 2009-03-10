@@ -29,6 +29,7 @@ fun! ShowColorsList()
     sort iu
     norm gg"_dd
     setl nomodifiable
+    setl noinsertmode
 
     noremap <silent> <buffer> <CR> :exec 'colo '.substitute(getline(line('.')), '\s.*$', '', '')<CR>
     map <silent> <buffer> q :bwipeout<CR> 
