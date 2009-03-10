@@ -1,3 +1,20 @@
+" session_manager.vim: Vim plugin for easy session management
+" Maintainer:   Piotr Husiatyński <phusiatynski@gmail.com>
+" Version:      0.1
+
+" Usage:
+"
+"   :call SessionManagerToggle() - open session manager
+"       
+"  <Return> - load selected session file
+"         o - load selected session file
+"         s - save current session
+"         n - create new session
+"         d - delete selected session
+"         q - close session manager
+"
+
+
 let s:sessions_data_path = "~/.vim_sessions/"
 let s:session_menu_width = 24
 let s:session_menu_name = "SessionMenu_"
@@ -110,7 +127,6 @@ function! SessionManagerOpen()
     nnoremap <silent> <buffer> o     :call SessionLoadSelected() <CR>
     nnoremap <silent> <buffer> s     :call SessionSave() <CR>
     nnoremap <silent> <buffer> n     :call SessionNew() <CR>
-    nnoremap <silent> <buffer> c     :call SessionNew() <CR>
     nnoremap <silent> <buffer> d     :call SessionDeleteSelected() <CR>
     nnoremap <silent> <buffer> q     :call SessionManagerClose() <CR>
 
