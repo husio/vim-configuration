@@ -7,9 +7,10 @@ Install additional apps:
 
 Required apps are:
 
+* Vim!
 * pyflakes
 * ctags
-
+* grep, fgrep, egrep, agrep, find, xargs
 
 Make old Vim configuration backup
 ---------------------------------
