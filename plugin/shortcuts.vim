@@ -30,7 +30,8 @@ imap     <C-right>      <Esc>:tabnext<CR><insert>
 map      <leader>=      maHmbgg=Gg'bztg`a
 map      <Leader>de     :%s/\s\+$//<CR>
 map      <Leader>spell  <Esc>:set spelllang=pl<CR><Esc>:set spell<CR>
-map      <Leader>color  <Esc>:call ShowColorsList()<CR>
+map      <Leader>color  <Esc>:call ColorschemeChooserToggle()<CR>
+map      <Leader>l      <Esc>:call EasyFinderToggle()<CR>
 map      <Leader>ma     <Esc>1GgqG<CR>`a
 
 imap     <M-_>          <C-R>=GetCloseTag()<CR>

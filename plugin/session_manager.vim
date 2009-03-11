@@ -90,7 +90,7 @@ endfunction
 
 
 function! SessionManagerClose()
-    exec ":".bufnr(s:session_menu_name)." bwipeout"
+    exec bufnr(s:session_menu_name)." bwipeout"
 endfunction
 
 
