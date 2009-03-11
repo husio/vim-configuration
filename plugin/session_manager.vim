@@ -48,7 +48,7 @@ function! SessionSave()
     if v:this_session == ""
         call SessionNew()
     else
-        exe "mksession! ". v:this_session
+        silent! exe "mksession! ". v:this_session
         echo "Session update: ". v:this_session
     endif
 endfunction
@@ -57,7 +57,7 @@ endfunction
 function! SessionLoad(ses_file)
     let l:ses_file = glob(s:sessions_data_path) . a:ses_file
     try
-        exec "so ". l:ses_file
+        silent! exec "so ". l:ses_file
     catch E445
         let l:answer = input("Unsaved buffers. Save and load new session? [y/N]: ")
         if l:answer != "y"
@@ -65,9 +65,9 @@ function! SessionLoad(ses_file)
         endif
     endtry
     wa!
-    exec "so ". l:ses_file
+    silent! exec "so ". l:ses_file
     call SessionManagerClose()
-    echo "Loaded session: ". l:ses_file
+    silent! echo "Loaded session: ". l:ses_file
 endfunction
 
 
@@ -90,7 +90,7 @@ endfunction
 
 
 function! SessionManagerClose()
-    exec bufnr(s:session_menu_name)." bwipeout"
+    silent! exec bufnr(s:session_menu_name)." bwipeout"
 endfunction
 
 
