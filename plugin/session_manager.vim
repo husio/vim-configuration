@@ -73,7 +73,7 @@ endfunction
 
 function! SessionDelete(ses_file)
     let l:ses_file = glob(s:sessions_data_path) . a:ses_file
-    silent! exe "!rm -r ". l:ses_file
+    silent! exe "!rm -f ". l:ses_file
     call SessionManagerReload()
     redraw!
 endfunction

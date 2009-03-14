@@ -6,7 +6,7 @@ if has("gui_running")
     set guioptions-=m
     "set guifont=Bitstream\ Vera\ Sans\ Mono\ 8
     "set guifont=Monaco\ 10
-    set guifont=Terminus\ 9
+    set guifont=Terminus\ 10
     "set guifont=Dina\ 10
     set mousehide
     colorscheme native
