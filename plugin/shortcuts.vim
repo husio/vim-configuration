@@ -19,6 +19,8 @@ imap <F9>   <Esc>:TlistToggle<CR>
 imap <F8>   <Esc>:NERDTreeToggle<CR><Esc>
 map  <F8>   :NERDTreeToggle<CR><Esc>
 
+map <C-b>   :MiniBufExplorer<CR>
+map <C-c>   :CMiniBufExplorer<CR>
 
 nmap     <C-t>          :tabnew<CR>
 nmap     <C-c>          :tabclose<CR>
