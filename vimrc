@@ -36,7 +36,7 @@ endif
 " {{{ main configuration
 "set spelllang=pl
 "set spell
-"syntax on	
+syntax on	
 set nocompatible	
 set nobackup			
 set ruler			
