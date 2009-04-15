@@ -2,8 +2,8 @@
 " Maintainer:	Piotr Husiatyński <phusiatynski@gmail.com>
 
 set background=dark
-"set t_Co=256
-let g:colors_name="grayvim"
+set t_Co=256
+let g:colors_name="256-grayvim"
 
 let python_highlight_all = 1
 let c_gnu = 1

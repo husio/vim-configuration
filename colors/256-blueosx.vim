@@ -2,8 +2,8 @@
 " Maintainer:	Piotr Husiatyński <phusiatynski@gmail.com>
 
 set background=dark
-"set t_Co=256
-let g:colors_name="blueosx"
+set t_Co=256
+let g:colors_name="256-blueosx"
 
 let python_highlight_all = 1
 let c_gnu = 1

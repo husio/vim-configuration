@@ -3,7 +3,7 @@
 
 set background=dark
 set t_Co=88
-let g:colors_name="darkvim"
+let g:colors_name="88-darkvim"
 
 let python_highlight_all = 1
 let c_gnu = 1

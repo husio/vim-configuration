@@ -92,7 +92,9 @@ class VimQuickFix(object):
 quickfix = VimQuickFix()
 
 class PySyntaxChecker(object):
-    def check(self, filename):
+    def check(self, filename=None):
+        if not filename:
+            filename = vim.eval("expand('%:p')")
         source = open(filename, 'r').read()
         print >> open('/tmp/vim.log', 'a'), filename, source
         msgs = []
