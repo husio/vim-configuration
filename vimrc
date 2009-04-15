@@ -13,7 +13,7 @@ else
         colorscheme 256-grayvim
     else
         set background=dark
-        colorscheme desert
+        colorscheme delek
     endif
 endif
 " }}}
