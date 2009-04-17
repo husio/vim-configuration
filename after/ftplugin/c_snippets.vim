@@ -2,48 +2,22 @@ if !exists('loaded_snippet') || &cp
     finish
 endif
 
-function! Count(haystack, needle)
-    let counter = 0
-    let index = match(a:haystack, a:needle)
-    while index > -1
-        let counter = counter + 1
-        let index = match(a:haystack, a:needle, index+1)
-    endwhile
-    return counter
+function! IfDefInsert()
+    let current_line = line('.')
+    let modname = expand("%:t:r")
+    normal gg
+    exec "normal O\n#ifndef __". modname ."__\n#define __". modname ."__"
+    normal G
+    exec "normal o#endif /* __". modname ."__ */"
+    exec "normal ". current_line ."gg"
+    return ""
 endfunction
 
-function! CArgList(count)
-    " This returns a list of empty tags to be used as 
-    " argument list placeholders for the call to printf
-    let st = g:snip_start_tag
-    let et = g:snip_end_tag
-    if a:count == 0
-        return ""
-    else
-        return repeat(', '.st.et, a:count)
-    endif
-endfunction
-	
-function! CMacroName(filename)
-    let name = a:filename
-    let name = substitute(name, '\.','_','g')
-    let name = substitute(name, '\(.\)','\u\1','g')
-    return "__".name."_"
-endfunction
 
 let st = g:snip_start_tag
 let et = g:snip_end_tag
 let cd = g:snip_elem_delim
 
-exec "Snippet do do<CR>{<CR>".st.et."<CR>} while (".st.et.");".st.et
-exec "Snippet ifdef #ifndef ``CMacroName(expand('%'))``_<CR>#define ``CMacroName(expand('%'))``_<CR><CR>".st.et."<CR><CR>#endif /* ``CMacroName(expand('%'))``_ */<CR>"
-exec "Snippet printf printf(\"".st."\"%s\"".et."\\n\"".st."\"%s\":CArgList(Count(@z, '%[^%]'))".et.");<CR>".st.et
-exec "Snippet struct struct ".st."name".et."<CR>{<CR>".st.et."<CR>};<CR>".st.et
-exec "Snippet namespace namespace ".st.":substitute(expand('%'),'.','\\l&', 'g')".et."<CR>{<CR>".st.et."<CR>};<CR>".st.et
-exec "Snippet map std::map<".st."key".et.", ".st."value".et."> map".st.et.";<CR>".st.et
-exec "Snippet mark #if 0<CR><CR>".st.et."<CR><CR>#endif<CR><CR>".st.et
-exec "Snippet if if(".st.et.")<CR>{<CR>".st.et."<CR>}<CR>".st.et
-exec "Snippet main #include <stdlib.h><CR><CR>int main (int argc, char const* argv[])<CR>{<CR>".st.et."<CR>return EXIT_SUCCESS;<CR>}<CR>".st.et
-exec "Snippet Inc #include <".st.et."><CR>".st.et
-exec "Snippet inc #include \"".st.et.".h\"<CR>".st.et
-exec "Snippet for for (".st."i".et."=".st.et."; ".st."i".et."<".st."count".et."; ++".st."i".et.") {<CR>".st.et."<CR>}<CR>".st.et
+exec "Snippet ifdef ``IfDefInsert()``"
+
+exec "Snippet class typedef struct _".st."classname".et." ".st."classname".et.";<CR><CR>struct _".st."classname".et." {<CR><CR>};<CR>".st.et
