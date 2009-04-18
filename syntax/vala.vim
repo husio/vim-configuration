@@ -1,3 +1,18 @@
+" Vim syntax file
+" Language:	Vala
+" Maintainers:	Emmanuele Bassi <ebassi@gnome.org>
+" 		Hans Vercammen <hveso3@gmail.com>
+" Last Change: 	2008-12-07
+" Filenames: 	*.vala *.vapi
+"
+" REFERENCES:
+" [1] http://live.gnome.org/Vala
+"
+" TODO: Possibly when reaching vala 1.0 release
+" 	- validate code attributes
+" 	- better error checking for known errors
+" 	- full support for valadoc
+
 if exists("b:current_syntax")
     finish
 endif
@@ -5,128 +20,153 @@ endif
 let s:vala_cpo_save = &cpo
 set cpo&vim
 
+" Types
+syn keyword valaType			bool char constpointer double float size_t ssize_t string unichar void
+syn keyword valaType 			int int8 int16 int32 int64 long short
+syn keyword valaType 			uint uint8 uint16 uint32 uint64 ulong ushort
+" Storage keywords
+syn keyword valaStorage			class delegate enum errordomain interface namespace struct
+" repeat / condition / label
+syn keyword valaRepeat			break continue do for foreach return while
+syn keyword valaConditional		else if switch
+" User Labels
+syn keyword valaLabel			case default
 
-" type
-syn keyword valaType          bool byte char decimal double float
-syn keyword valaType          int long object sbyte short string uint
-syn keyword valaType          ulong ushort void
-" storage
-syn keyword valaStorage       class delegate enum interface namespace
-syn keyword valaStorage       struct
-" repeate / condition / label
-syn keyword valaRepeat        break continue do for foreach goto
-syn keyword valaRepeat        return while yield
-syn keyword valaConditional   else if switch
-syn keyword valaLabel         case default
-
-" there's no :: operator in C#
-syn match valaOperatorError   display +::+
-" user labels (see [1] 8.6 Statements)
-syn match   valaLabel         display +^\s*\I\i*\s*:\([^:]\)\@=+
-" modifier
-syn keyword valaModifier      abstract const extern internal override
-syn keyword valaModifier      private protected public readonly sealed signal
-syn keyword valaModifier      static virtual volatile partial
-" constant
-syn keyword valaConstant      false null true
-" exception
-syn keyword valaException     try catch finally throw
-
-" TODO:
-syn keyword valaUnspecifiedStatement  as base checked event fixed in is lock
-syn keyword valaUnspecifiedStatement  new operator out params ref sizeof
-syn keyword valaUnspecifiedStatement  stackalloc this typeof unchecked unsafe
-syn keyword valaUnspecifiedStatement  using
-" TODO:
-syn keyword valaUnsupportedStatement  get set add remove value
-" TODO:
-syn keyword valaUnspecifiedKeyword    explicit implicit where
+" Modifiers
+syn keyword valaModifier		abstract const dynamic ensures extern inline internal override 
+syn keyword valaModifier 		private protected public requires signal static virtual volatile weak
+" Constants
+syn keyword valaConstant		false null true
+" Exceptions
+syn keyword valaException		try catch finally throw
+" Unspecified Statements
+syn keyword valaUnspecifiedStatement	as base construct delete get in is lock new out params ref sizeof set this throws typeof using value var yield yields
 
 " Comments
-"
-" PROVIDES: @valaCommentHook
-"
-" TODO: include strings ?
-"
-syn region  valaComment       start="/\*"  end="\*/" contains=@valaCommentHook
-syn match   valaComment       "//.*$" contains=@valaCommentHook
+syn cluster valaCommentGroup 		contains=valaTodo
+syn keyword valaTodo 			contained TODO FIXME XXX NOTE
 
-" xml markup inside '///' comments
-syn cluster xmlRegionHook   add=valaXmlCommentLeader
-syn cluster xmlCdataHook    add=valaXmlCommentLeader
-syn cluster xmlStartTagHook add=valaXmlCommentLeader
-syn keyword valaXmlTag        contained c code example exception include list
-syn keyword valaXmlTag            contained para param paramref permission remarks
-syn keyword valaXmlTag            contained returns see seealso summary value
+" valadoc Comments (ported from javadoc comments in java.vim)
+" TODO: need to verify valadoc syntax
+if !exists("vala_ignore_valadoc")
+  syn cluster valaDocCommentGroup 	contains=valaDocTags,valaDocSeeTag
+  syn region  valaDocTags 		contained start="{@\(link\|linkplain\|inherit[Dd]oc\|doc[rR]oot\|value\)" end="}"
+  syn match   valaDocTags 		contained "@\(param\|exception\|throws\|since\)\s\+\S\+" contains=valaDocParam
+  syn match   valaDocParam 		contained "\s\S\+"
+  syn match   valaDocTags 		contained "@\(author\|brief\|version\|return\|deprecated\)\>"
+  syn region  valaDocSeeTag       	contained matchgroup=valaDocTags start="@see\s\+" matchgroup=NONE end="\_."re=e-1 contains=valaDocSeeTagParam
+  syn match   valaDocSeeTagParam  	contained @"\_[^"]\+"\|<a\s\+\_.\{-}</a>\|\(\k\|\.\)*\(#\k\+\((\_[^)]\+)\)\=\)\=@ extend
+endif
 
-syn cluster xmlTagHook add=valaXmlTag
+" Comment Strings (ported from c.vim)
+if exists("vala_comment_strings")
+  syn match  	valaCommentSkip		contained "^\s*\*\($\|\s\+\)"
+  syn region 	valaCommentString	contained start=+L\=\\\@<!"+ skip=+\\\\\|\\"+ end=+"+ end=+\*/+me=s-1 contains=valaSpecialChar,valaCommentSkip
+  syn region 	valaComment2String	contained start=+L\=\\\@<!"+ skip=+\\\\\|\\"+ end=+"+ end="$" contains=valaSpecialChar
+  syn cluster 	valaCommentStringGroup 	contains=valaCommentString,valaCharacter,valaNumber
 
-syn match   valaXmlCommentLeader  +\/\/\/+    contained
-syn match   valaXmlComment    +\/\/\/.*$+ contains=valaXmlCommentLeader,@valaXml
-"syntax include @valaXml <sfile>:p:h/xml.vim
-hi def link xmlRegion Comment
+  syn region 	valaCommentL		start="//" end="$" keepend contains=@valaCommentGroup,valaComment2String,valaCharacter,valaNumber,valaSpaceError,@Spell
+  syn region 	valaComment		matchgroup=valaCommentStart start="/\*" end="\*/" contains=@valaCommentGroup,@valaCommentStringGroup,valaCommentStartError,valaSpaceError,@Spell extend
+  if !exists("vala_ignore_valadoc")
+    syn region 	valaDocComment 		matchgroup=valaCommentStart start="/\*\*" end="\*/" keepend contains=@valaCommentGroup,@valaDocCommentGroup,@valaCommentStringGroup,valaCommentStartError,valaSpaceError,@Spell
+  endif
+else
+  syn region	valaCommentL		start="//" end="$" keepend contains=@valaCommentGroup,valaSpaceError,@Spell
+  syn region	valaComment		matchgroup=valaCommentStart start="/\*" end="\*/" contains=@valaCommentGroup,valaCommentStartError,valaSpaceError,@Spell
+  if !exists("vala_ignore_valadoc")
+    syn region 	valaDocComment 		matchgroup=valaCommentStart start="/\*\*" end="\*/" keepend contains=@valaCommentGroup,@valaDocCommentGroup,valaCommentStartError,valaSpaceError,@Spell
+  endif
+endif
+" match comment errors
+syntax match valaCommentError 		display "\*/"
+syntax match valaCommentStartError 	display "/\*"me=e-1 contained
+" match the special comment /**/
+syn match   valaComment		 	"/\*\*/"
 
+" Vala Code Attributes
+syn region  valaAttribute 		start="^\s*\[" end="\]$" contains=valaComment,valaString keepend
+syn region  valaAttribute 		start="\[CCode" end="\]" contains=valaComment,valaString
 
-" [1] 9.5 Pre-processing directives
-syn region  valaPreCondit
-            \ start="^\s*#\s*\(define\|undef\|if\|elif\|else\|endif\|line\|error\|warning\|region\|endregion\)"
-                \ skip="\\$" end="$" contains=valaComment keepend
+" Avoid escaped keyword matching
+syn match   valaUserContent 		display "@\I*"
 
 " Strings and constants
-syn match   valaSpecialError  contained "\\."
-syn match   valaSpecialCharError  contained "[^']"
-" [1] 9.4.4.4 Character literals
-syn match   valaSpecialChar   contained +\\["\\'0abfnrtvx]+
-" unicode characters
-syn match   valaUnicodeNumber +\\\(u\x\{4}\|U\x\{8}\)+ contained contains=valaUnicodeSpecifier
-syn match   valaUnicodeSpecifier  +\\[uU]+ contained
-syn region  valaVerbatimString    start=+@"+ end=+"+ end=+$+ contains=valaVerbatimSpec
-syn match   valaVerbatimSpec  +@"+he=s+1 contained
-syn region  valaString        start=+"+  end=+"+ end=+$+ contains=valaSpecialChar,valaSpecialError,valaUnicodeNumber
-syn match   valaCharacter     "'[^']*'" contains=valaSpecialChar,valaSpecialCharError
-syn match   valaCharacter     "'\\''" contains=valaSpecialChar
-syn match   valaCharacter     "'[^\\]'"
-syn match   valaNumber        "\<\(0[0-7]*\|0[xX]\x\+\|\d\+\)[lL]\=\>"
-syn match   valaNumber        "\(\<\d\+\.\d*\|\.\d\+\)\([eE][-+]\=\d\+\)\=[fFdD]\="
-syn match   valaNumber        "\<\d\+[eE][-+]\=\d\+[fFdD]\=\>"
-syn match   valaNumber        "\<\d\+\([eE][-+]\=\d\+\)\=[fFdD]\>"
+syn match   valaSpecialError		contained "\\."
+syn match   valaSpecialCharError	contained "[^']"
+syn match   valaSpecialChar		contained +\\["\\'0abfnrtvx]+
+syn region  valaString			start=+"+  end=+"+ end=+$+ contains=valaSpecialChar,valaSpecialError,valaUnicodeNumber,@Spell
+syn region  valaVerbatimString		start=+"""+ end=+"""+ contains=@Spell
+syn match   valaUnicodeNumber		+\\\(u\x\{4}\|U\x\{8}\)+ contained contains=valaUnicodeSpecifier
+syn match   valaUnicodeSpecifier	+\\[uU]+ contained
+syn match   valaCharacter		"'[^']*'" contains=valaSpecialChar,valaSpecialCharError
+syn match   valaCharacter		"'\\''" contains=valaSpecialChar
+syn match   valaCharacter		"'[^\\]'"
+syn match   valaNumber			display "\<\(0[0-7]*\|0[xX]\x\+\|\d\+\)[lL]\=\>"
+syn match   valaNumber			display "\(\<\d\+\.\d*\|\.\d\+\)\([eE][-+]\=\d\+\)\=[fFdD]\="
+syn match   valaNumber			display "\<\d\+[eE][-+]\=\d\+[fFdD]\=\>"
+syn match   valaNumber			display "\<\d\+\([eE][-+]\=\d\+\)\=[fFdD]\>"
+
+" when wanted, highlight trailing white space
+if exists("vala_space_errors")
+  if !exists("vala_no_trail_space_error")
+    syn match valaSpaceError		display excludenl "\s\+$"
+  endif
+  if !exists("vala_no_tab_space_error")
+    syn match valaSpaceError 		display " \+\t"me=e-1
+  endif
+endif
+
+" when wanted, set minimum lines for comment syntax syncing
+if exists("vala_minlines")
+  let b:vala_minlines = vala_minlines
+else
+  let b:vala_minlines = 50
+endif
+exec "syn sync ccomment valaComment minlines=" . b:vala_minlines
 
 " The default highlighting.
-hi def link valaType                  Type
-hi def link valaStorage               StorageClass
-hi def link valaRepeat                Repeat
-hi def link valaConditional           Conditional
-hi def link valaLabel                 Label
-hi def link valaModifier              StorageClass
-hi def link valaConstant              Constant
-hi def link valaException             Exception
-hi def link valaUnspecifiedStatement  Statement
-hi def link valaUnsupportedStatement  Statement
-hi def link valaUnspecifiedKeyword    Keyword
-hi def link valaOperatorError         Error
+hi def link valaType			Type
+hi def link valaStorage			StorageClass
+hi def link valaRepeat			Repeat
+hi def link valaConditional		Conditional
+hi def link valaLabel			Label
+hi def link valaModifier		StorageClass
+hi def link valaConstant		Constant
+hi def link valaException		Exception
+hi def link valaUnspecifiedStatement	Statement
+hi def link valaUnspecifiedKeyword	Keyword
+hi def link valaContextualStatement	Statement
 
-hi def link valaComment           Comment
+hi def link valaCommentError		Error
+hi def link valaCommentStartError	Error
+hi def link valaSpecialError		Error
+hi def link valaSpecialCharError	Error
+hi def link valaSpaceError 		Error
 
-hi def link valaSpecialError      Error
-hi def link valaSpecialCharError  Error
-hi def link valaString            String
-hi def link valaVerbatimString    String
-hi def link valaVerbatimSpec      SpecialChar
-hi def link valaPreCondit         PreCondit
-hi def link valaCharacter         Character
-hi def link valaSpecialChar       SpecialChar
-hi def link valaNumber            Number
-hi def link valaUnicodeNumber     SpecialChar
-hi def link valaUnicodeSpecifier  SpecialChar
+hi def link valaTodo			Todo
+hi def link valaCommentL		valaComment
+hi def link valaCommentStart		valaComment
+hi def link valaCommentSkip		valaComment
+hi def link valaComment			Comment
+hi def link valaDocComment		Comment
+hi def link valaDocTags 		Special
+hi def link valaDocParam 		Function
+hi def link valaDocSeeTagParam 		Function
+hi def link valaAttribute 		PreCondit
 
-" xml markup
-hi def link valaXmlCommentLeader  Comment
-hi def link valaXmlComment        Comment
-hi def link valaXmlTag            Statement
+hi def link valaCommentString		valaString
+hi def link valaComment2String		valaString
+hi def link valaString			String
+hi def link valaVerbatimString		String
+hi def link valaCharacter		Character
+hi def link valaSpecialChar		SpecialChar
+hi def link valaNumber			Number
+hi def link valaUnicodeNumber		SpecialChar
+hi def link valaUnicodeSpecifier	SpecialChar
 
 let b:current_syntax = "vala"
 
 let &cpo = s:vala_cpo_save
 unlet s:vala_cpo_save
 
-" vim: ts=4
+" vim: ts=8

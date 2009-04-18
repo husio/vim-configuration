@@ -48,7 +48,10 @@ filetype indent on
 
 autocmd BufNewFile * startinsert
 
-autocmd BufReadPost PKGBUILD  set filetype=PKGBUILD
-autocmd BufRead,BufNewFile *.mkd set filetype=mkd
-autocmd BufRead,BufNewFile *.html set textwidth=0
+autocmd BufReadPost        PKGBUILD         setfiletype PKGBUILD
+autocmd BufRead,BufNewFile *.mkd            setfiletype mkd
+autocmd BufRead,BufNewFile *.html           set textwidth=0
+
+autocmd BufRead,BufNewFile *.vala           setfiletype vala
+autocmd BufRead,BufNewFile *.vapi           setfiletype vala
 " }}}

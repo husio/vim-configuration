@@ -48,7 +48,8 @@ language_mapping = {
     'bash':             'bash',
     'bat':              'bat',
     'd':                'd',
-    'genshi':           'html+genshi'
+    'genshi':           'html+genshi',
+    'erlang':           'erlang'
 }
 
 language_reverse_mapping = {}
