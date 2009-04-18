@@ -9,7 +9,8 @@ if has("gui_running")
     colorsche eclm_wombat
 elseif (&term == 'xterm-color')
     set background=dark
-    colorscheme 256-grayvim
+    "colorscheme 256-grayvim
+    color molokai
 else
     set background=dark
     colorscheme delek
