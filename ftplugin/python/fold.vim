@@ -6,11 +6,12 @@ let b:did_ftplugin = 1
 
 
 set foldmethod=expr
-"set foldcolumn=3
-set foldlevel=3
-set foldlevelstart=2
+"set foldcolumn=2
+"set foldlevel=3
+set foldexpr=2
+set foldlevelstart=1
 set foldnestmax=3
-set foldminlines=3
+set foldminlines=10
 set foldexpr=PythonFoldExpr(v:lnum)
 set foldtext=PythonFoldText()
 
@@ -38,16 +39,19 @@ endfunction
 
 function! PythonFoldExpr(lnum)
     if indent(nextnonblank(a:lnum)) == 0
-        return 1
+        return 0
     endif
-    if getline(a:lnum-1) =~ '^\(class\|def\)\s'
-        return 1
+    if indent(a:lnum) == 0
+        return 0
     endif
     if getline(a:lnum) =~ '^\s*$'
         return "="
     endif
-    if indent(a:lnum) == 0
-        return 0
+    "if getline(a:lnum-1) =~ '^\(class\|def\)\s'
+    "    return 1
+    "endif
+    if getline(a:lnum-1) =~ '^\s\{4\}\(class\|def\)\s'
+        return 1
     endif
     return '='
 endfunction
