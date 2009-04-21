@@ -8,6 +8,7 @@ if has("gui_running")
     set mousehide
     colorsche eclm_wombat
 elseif (&term == 'xterm-color')
+    set t_Co=256
     set background=dark
     "colorscheme 256-grayvim
     color molokai
