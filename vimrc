@@ -6,7 +6,8 @@ if has("gui_running")
     set guioptions-=m
     set guifont=Mono\ 10
     set mousehide
-    colorsche eclm_wombat
+    "colorsche eclm_wombat
+    color molokai
 elseif (&term == 'xterm-color')
     set t_Co=256
     set background=dark
