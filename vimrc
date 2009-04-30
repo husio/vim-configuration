@@ -12,7 +12,7 @@ elseif (&term == 'xterm-color')
     set t_Co=256
     set background=dark
     "colorscheme 256-grayvim
-    color molokai
+    color morning
 else
     set background=dark
     colorscheme delek
