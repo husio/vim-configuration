@@ -4,15 +4,14 @@ if has("gui_running")
     set guioptions-=L
     set guioptions-=T
     set guioptions-=m
-    set guifont=Mono\ 10
+    set guifont=terminus\ 9
     set mousehide
-    "colorsche eclm_wombat
-    color molokai
+    colorsche wombat
 elseif (&term == 'xterm-color')
     set t_Co=256
     set background=dark
     "colorscheme 256-grayvim
-    color morning
+    color xoria256
 else
     set background=dark
     colorscheme delek
@@ -39,7 +38,7 @@ set wildmode=list:longest,full
 set completeopt=longest,menuone
 set enc=utf8
 set textwidth=80
-set fileencodings=utf-8,latin2
+set fileencodings=utf-8
 set foldmethod=marker
 "set cursorline
 " }}}
