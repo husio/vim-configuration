@@ -32,3 +32,13 @@ map      <Leader>de     :%s/\s\+$//<CR>
 map      <Leader>spell  <Esc>:set spelllang=pl<CR><Esc>:set spell<CR>
 map      <Leader>color  <Esc>:call ColorschemeChooserToggle()<CR>
 map      <Leader>ma     <Esc>1GgqG<CR>`a
+
+" close pairs
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {}<Left>
+inoremap (<CR>  (<CR>)<Esc>O
+inoremap ((     ()<Left>
+inoremap [<CR>  [<CR>]<Esc>O
+inoremap [[     []<Left>
+
+inoremap /**   /*<Space><Space>*/<Left><Left><Left>
