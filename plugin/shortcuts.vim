@@ -1,15 +1,9 @@
 " tricky xmodmap change usage
 
-function! RunMake()
-    exec "silent ! xterm -e '~/.vim/sh/runmake.sh ". &makeprg ." ". expand("%:p") ."' &"
-endfunction
-
 map  «      :silent! make<CR><C-l>:cc<CR>
 imap «      <Esc>:silent! make<CR><C-l>:cc<CR>
 map  »      :call RunMake()<CR>
 imap »      <Esc>:call RunMake()<CR>
-
-nmap <F12>  :call SessionManagerToggle()<CR>
 
 map  <F10>  :cn<CR>
 imap <F10>  <Esc>:cn<CR>
@@ -35,10 +29,7 @@ map      <Leader>ma     <Esc>1GgqG<CR>`a
 
 " close pairs
 inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {}<Left>
 inoremap (<CR>  (<CR>)<Esc>O
-inoremap ((     ()<Left>
 inoremap [<CR>  [<CR>]<Esc>O
-inoremap [[     []<Left>
 
 inoremap /**   /*<Space><Space>*/<Left><Left><Left>
