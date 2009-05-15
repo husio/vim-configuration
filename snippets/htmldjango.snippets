@@ -10,8 +10,14 @@ snippet for
 snippet if
 	{% if ${1} %} ${2} {% endif %} ${3}
 
-snippet ifequal
-	{% ifequal ${1} %} ${2} {% endifequal %} ${3}
-
 snippet {{
 	{{ ${1} }} ${2}
+
+snippet {%
+	{% ${1} %} ${2}
+
+snippet ifequal
+	{% ifequal ${1} %} ${2} {% endifequal %} ${3}
+	
+snippet ifnotequal
+	{% ifnotequal ${1} %} ${2} {% endifequal %} ${3}
