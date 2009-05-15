@@ -4,7 +4,7 @@ if has("gui_running")
     set guioptions-=L
     set guioptions-=T
     set guioptions-=m
-    set guifont=terminus\ 9
+    set guifont=Monospace\ 9
     set mousehide
     colorsche wombat
 elseif (&term == 'xterm-color')
