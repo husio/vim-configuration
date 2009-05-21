@@ -6,7 +6,7 @@ if has("gui_running")
     set guioptions-=m
     set guifont=Monospace\ 9
     set mousehide
-    colorsche wombat
+    colorsche proton
 elseif (&term == 'xterm-color')
     set t_Co=256
     set background=dark
