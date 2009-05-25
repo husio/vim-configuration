@@ -9,9 +9,10 @@ if has("gui_running")
     colorsche proton
 elseif (&term == 'xterm-color')
     set t_Co=256
-    set background=dark
     "colorscheme 256-grayvim
-    color xoria256
+    "color xoria256
+    source ~/.vim/plugin/guicolorscheme.vim
+    GuiColorScheme proton
 else
     set background=dark
     colorscheme delek
