@@ -5,26 +5,13 @@ snippet #!
 snippet #enc
 	# -*- coding: `&enc`
 	
-# New Class
-snippet class
-	class ${1:ClassName}(${2:object}):
-		"""${3:docstring for $1}"""
-		def __init__(self${5:, *args, **kwds}):
-			${5:super($1, self).__init__()}
-			${6}
-
-snippet def
-	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
-		"""${3:docstring for $1}"""
-		${4:pass}
-
-snippet defs
-	def ${1:mname}(self, ${2:arg})):
-		${3:pass}
 
 snippet ifname
+	def main():
+		${1:pass}
+	
 	if __name__ == '__main__':
-		${1:main()}
+		main()
 
 snippet trace
 	import ipdb; ipdb.set_trace()
