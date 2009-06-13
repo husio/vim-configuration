@@ -1,6 +1,5 @@
 snippet main
-	int 
-	main(int argc, char *argv[])
+	int main(int argc, char *argv[])
 	{
 		${1}
 		return 0;
@@ -22,9 +21,8 @@ snippet do
 		${2:/* code */}
 	} while (${1:/* condition */});
 
-snippet class
-	typedef struct _${1:Object} $1;
-	struct _$1
-	{
-		$2
-	};
+snippet #i
+	#include "${1}"${2}
+
+snippet #in
+	#include <${1}>${2}
