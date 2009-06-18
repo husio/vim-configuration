@@ -21,10 +21,6 @@ imap     <C-left>       <Esc>:tabprev<CR><insert>
 map      <C-right>      :tabnext<CR>
 imap     <C-right>      <Esc>:tabnext<CR><insert>
 
-map      <S-Insert>     <SID>Paste
-imap     <S-Insert>     <Esc><SID>Paste
-
-
 map      <leader>=      maHmbgg=Gg'bztg`a
 map      <Leader>de     :%s/\s\+$//<CR>
 map      <Leader>spell  <Esc>:set spelllang=pl<CR><Esc>:set spell<CR>
@@ -35,5 +31,10 @@ map      <Leader>ma     <Esc>1GgqG<CR>`a
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap (<CR>  (<CR>)<Esc>O
 inoremap [<CR>  [<CR>]<Esc>O
+
+map  <S-Insert> "*gp
+map! <S-Insert> "*gp
+imap <S-Insert> <MiddleMouse>
+
 
 inoremap /**   /*<Space><Space>*/<Left><Left><Left>
