@@ -145,9 +145,9 @@ function! s:OpenWindow(buffnr, lineno)
     set noswapfile
     set modifiable
     normal! "zPGddgg
-    set fde=getline(v:lnum)[0]=='L'
-    set foldmethod=expr
-    set foldlevel=0
+    setlocal fde=getline(v:lnum)[0]=='L'
+    setlocal foldmethod=expr
+    setlocal foldlevel=0
     normal! zR
 
     " Resize line if too big.

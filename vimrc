@@ -12,8 +12,6 @@ if has("gui_running")
 elseif (&term == 'xterm-color')
     set t_Co=256
     colorscheme 256-graypurple
-    "source ~/.vim/plugin/guicolorscheme.vim
-    "GuiColorScheme proton
 else
     set background=dark
     colorscheme delek

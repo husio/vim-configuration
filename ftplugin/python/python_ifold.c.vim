@@ -247,4 +247,4 @@ function! ReFold()
     echo
 endfunction
 
-call ReFold()
+"call ReFold()
