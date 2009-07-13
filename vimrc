@@ -4,6 +4,7 @@ if has("gui_running")
     set guioptions-=L
     set guioptions-=T
     set guioptions-=m
+    set guioptions-=e
     "set guifont=Monospace\ 9
     set guifont=Terminus\ 8
     set mousehide
