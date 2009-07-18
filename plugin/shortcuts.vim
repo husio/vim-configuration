@@ -1,10 +1,5 @@
 " tricky xmodmap change usage
 
-map  «      :silent! make<CR><C-l>:cc<CR>
-imap «      <Esc>:silent! make<CR><C-l>:cc<CR>
-map  »      :call RunMake()<CR>
-imap »      <Esc>:call RunMake()<CR>
-
 map  <F10>  :cn<CR>
 imap <F10>  <Esc>:cn<CR>
 
@@ -27,10 +22,7 @@ map      <Leader>spell  <Esc>:set spelllang=pl<CR><Esc>:set spell<CR>
 map      <Leader>color  <Esc>:call ColorschemeChooserToggle()<CR>
 map      <Leader>ma     <Esc>1GgqG<CR>`a
 
-" close pairs
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap (<CR>  (<CR>)<Esc>O
-inoremap [<CR>  [<CR>]<Esc>O
+map      <Leader>t      <Esc>:il TODO\|FIXME\|REMOVE\|FIX <CR>
 
 map  <S-Insert> "*gp
 map! <S-Insert> "*gp
