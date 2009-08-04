@@ -27,7 +27,7 @@ set foldcolumn=1
 
 let w:nestinglevel = 0
 let w:signature = 0
-let w:is_folded = 1
+let w:is_folded = -1
 
 function! PythonFoldText()
     let line = getline(v:foldstart)
@@ -209,6 +209,10 @@ function! GetPythonFoldExperimental(lnum)
 endfunction
 
 function! ToggleFold()
+    if w:is_folded == -1
+        normal zM
+        let w:is_folded = 0
+    endif
     let w:nestinglevel = 0
     let w:signature = 0
     if w:is_folded

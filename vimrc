@@ -8,10 +8,10 @@ if has("gui_running")
     "set guifont=Monospace\ 9
     set guifont=Terminus\ 8
     set mousehide
-    colorsche rdark
+    colorsche darkspectrum
 elseif (&term == 'xterm-color')
     set t_Co=256
-    colorscheme 256-graypurple
+    colorscheme xoria256
 else
     set background=dark
     colorscheme delek
@@ -57,6 +57,4 @@ autocmd BufRead,BufNewFile *.html           set textwidth=0
 
 autocmd BufRead,BufNewFile *.vala           setfiletype vala
 autocmd BufRead,BufNewFile *.vapi           setfiletype vala
-
-"autocmd BufRead,BufNewFile *                exec "normal zR"
 " }}}
