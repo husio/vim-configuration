@@ -8,7 +8,7 @@ if has("gui_running")
     "set guifont=Monospace\ 9
     set guifont=Terminus\ 8
     set mousehide
-    colorsche darkspectrum
+    colorsche bclear
 elseif (&term == 'xterm-color')
     set t_Co=256
     colorscheme xoria256
