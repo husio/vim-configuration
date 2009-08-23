@@ -3,8 +3,8 @@
 map  <F10>  :cn<CR>
 imap <F10>  <Esc>:cn<CR>
 
-map  <F9>   :TlistToggle<CR>
-imap <F9>   <Esc>:TlistToggle<CR>
+"map  <F9>   :TlistToggle<CR>
+"imap <F9>   <Esc>:TlistToggle<CR>
 
 imap <F8>   <Esc>:NERDTreeToggle<CR><Esc>
 map  <F8>   :NERDTreeToggle<CR><Esc>
@@ -27,6 +27,3 @@ map      <Leader>t      <Esc>:il TODO\|FIXME\|REMOVE\|FIX <CR>
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
 imap <S-Insert> <MiddleMouse>
-
-
-inoremap /**   /*<Space><Space>*/<Left><Left><Left>

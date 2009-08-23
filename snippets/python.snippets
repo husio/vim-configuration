@@ -1,15 +1,21 @@
 snippet #!
 	#!/usr/bin/env python
-	# -*- coding: `&enc`
+	# -*- coding: `&enc` -*-
 
 snippet #enc
-	# -*- coding: `&enc`
+	# -*- coding: `&enc` -*-
 	
 snippet __info__
-	__version__ = '$1'
+	__version__ = '${1:0.1}'
 	__author__ = 'Piotr Husiatynski <phusiatynski@gmail.com>'
 	__revision__ = '$Id$'
-	$2
+	${2}
+
+snippet parser
+	parser = optparse.OptionParser('usage: %prog ${1}')
+	parser.add_option(${2}
+	(options, args) = parser.parse_args()
+	${3}
 
 snippet ifname
 	def main():

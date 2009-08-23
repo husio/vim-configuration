@@ -37,10 +37,10 @@ set autoindent
 set wildmode=list:longest,full
 set completeopt=longest,menuone
 set enc=utf8
-set textwidth=80
+set textwidth=78
 set fileencodings=utf-8
 set foldmethod=marker
-set foldlevelstart=99
+set foldlevelstart=0
 "set cursorline
 " }}}
 
