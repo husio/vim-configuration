@@ -24,8 +24,8 @@ map      <Leader>ma     <Esc>1GgqG<CR>`a
 
 map      <Leader>t      <Esc>:il TODO\|FIXME\|REMOVE\|FIX <CR>
 
-map  <S-Insert> "*gp
-map! <S-Insert> "*gp
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
 imap <S-Insert> <MiddleMouse>
 
 
