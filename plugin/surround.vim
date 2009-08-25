@@ -238,6 +238,20 @@ function! s:wrap(string,char,type,...)
                 endif
             endif
         endif
+    elseif newchar ==# 'd' || newchar == 'D'
+        " Django template tag
+        let env = input('{% ')
+        " strip over string
+        let env = substitute(env, '^\s*\|\s*$', '', 'g')
+        if env =~ '%}'
+            let env = strpart(env, 0, strlen(env) - 2)
+        endif
+        let env = substitute(env, '^\s*\|\s*$', '', 'g')
+        let envend = split(env, ' ')[0]
+        if env != ""
+            let before = '{% ' . env . ' %}'
+            let after = '{% end' . envend . ' %}'
+        endif
     elseif newchar ==# 'l' || newchar == '\'
         " LaTeX
         let env = input('\begin{')
