@@ -5,10 +5,11 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=m
     set guioptions-=e
-    "set guifont=Monospace\ 9
-    set guifont=Terminus\ 8
+    "set guifont=Terminus\ 8
+    "colorsche bclear
     set mousehide
-    colorsche bclear
+    set guifont=Mono\ 9
+    colorsche Mustang
 elseif (&term == 'xterm-color')
     set t_Co=256
     colorscheme xoria256
