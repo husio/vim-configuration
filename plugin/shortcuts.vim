@@ -24,6 +24,10 @@ map      <Leader>ma     <Esc>1GgqG<CR>`a
 
 map      <Leader>t      <Esc>:il TODO\|FIXME\|REMOVE\|FIX <CR>
 
+map      <C-e>          <Esc>:FuzzyFinderFile <CR>
+imap     <C-e>          <Esc>:FuzzyFinderFile <CR>
+
+
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
 imap <S-Insert> <MiddleMouse>
