@@ -8,8 +8,8 @@ if has("gui_running")
     "set guifont=Terminus\ 8
     "colorsche bclear
     set mousehide
-    set guifont=Mono\ 9
-    colorsche Mustang
+    set guifont=Mono\ 8
+    colorsche dawn
 elseif (&term == 'xterm-color')
     set t_Co=256
     colorscheme xoria256
@@ -17,6 +17,14 @@ else
     set background=dark
     colorscheme delek
 endif
+" }}}
+
+" {{{ printer
+set printdevice=LaserJet
+"set printheader="%<%f%h%m%=Strona %N"
+set printencoding=iso-8859-2
+set printfont=curier
+set printfont=Mono\ 8
 " }}}
 
 " {{{ main configuration
