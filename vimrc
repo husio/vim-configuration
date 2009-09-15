@@ -12,7 +12,7 @@ if has("gui_running")
     colorsche dawn
 elseif (&term == 'xterm-color')
     set t_Co=256
-    colorscheme xoria256
+    colorscheme soso
 else
     set background=dark
     colorscheme delek
@@ -28,6 +28,7 @@ set printfont=Mono\ 8
 " }}}
 
 " {{{ main configuration
+set mouse=a
 "set spelllang=pl
 "set spell
 syntax on
