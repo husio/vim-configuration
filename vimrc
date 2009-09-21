@@ -67,4 +67,6 @@ autocmd BufRead,BufNewFile *.html           set textwidth=0
 
 autocmd BufRead,BufNewFile *.vala           setfiletype vala
 autocmd BufRead,BufNewFile *.vapi           setfiletype vala
+
+autocmd BufRead,BufNewFile *.js             setfiletype javascript.jquery
 " }}}
