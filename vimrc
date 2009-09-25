@@ -51,6 +51,7 @@ set textwidth=78
 set fileencodings=utf-8
 set foldmethod=marker
 set foldlevelstart=0
+set path=$PWD/**
 "set cursorline
 " }}}
 
