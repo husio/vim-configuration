@@ -9,10 +9,12 @@ if has("gui_running")
     "colorsche bclear
     set mousehide
     set guifont=Mono\ 8
-    colorsche bclear
+    "colorsche bclear
+    colorscheme mustang
 elseif (&term == 'xterm-color')
     set t_Co=256
-    colorscheme soso
+    "colorscheme soso
+    colorscheme mustang
 else
     set background=dark
     colorscheme delek
@@ -51,7 +53,7 @@ set textwidth=78
 set fileencodings=utf-8
 set foldmethod=marker
 set foldlevelstart=0
-set path=$PWD/**
+"set path=$PWD/**
 "set cursorline
 " }}}
 
