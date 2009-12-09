@@ -16,8 +16,8 @@ hi Directory	ctermfg=57          ctermbg=254         cterm=None
 hi ErrorMsg     ctermfg=160         ctermbg=245         cterm=None
 hi PreProc	    ctermfg=243         ctermbg=None        cterm=Bold
 hi Search	    ctermfg=125         ctermbg=None        cterm=Bold
-hi Type		    ctermfg=63          ctermbg=None        cterm=None
-hi Statement	ctermfg=75          ctermbg=None        cterm=Bold
+hi Type		    ctermfg=166         ctermbg=None        cterm=Bold
+hi Statement	ctermfg=172         ctermbg=None        cterm=Bold
 hi Comment	    ctermfg=240         ctermbg=None        cterm=None
 hi LineNr	    ctermfg=244         ctermbg=233         cterm=None
 hi NonText	    ctermfg=105         ctermbg=None        cterm=Bold
