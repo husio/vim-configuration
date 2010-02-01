@@ -6,11 +6,12 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=e
     "set guifont=Terminus\ 8
+    set guifont=Monaco\ 9
     "colorsche bclear
     set mousehide
-    set guifont=Mono\ 8
+    "set guifont=iconsolata\ 8
     "colorsche bclear
-    colorscheme mustang
+    colorscheme autumn2
 elseif (&term == 'xterm-color')
     set t_Co=256
     "colorscheme soso
@@ -56,6 +57,12 @@ set foldlevelstart=0
 "set path=$PWD/**
 "set cursorline
 " }}}
+
+" {{{ plugin settings
+" calendar
+let g:calendar_diary = "~/.calendar"
+" }}}
+
 
 " {{{ filetype configuration
 filetype on
