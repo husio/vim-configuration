@@ -5,13 +5,13 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=m
     set guioptions-=e
-    "set guifont=Terminus\ 8
-    set guifont=Monaco\ 9
+    set guifont=Terminus\ 8
+    "set guifont=Monaco\ 9
     "colorsche bclear
     set mousehide
     "set guifont=iconsolata\ 8
     "colorsche bclear
-    colorscheme autumn2
+    colorscheme rdark
 elseif (&term == 'xterm-color')
     set t_Co=256
     "colorscheme soso
@@ -74,9 +74,11 @@ autocmd BufNewFile * startinsert
 autocmd BufReadPost        PKGBUILD         setfiletype PKGBUILD
 autocmd BufRead,BufNewFile *.mkd            setfiletype mkd
 autocmd BufRead,BufNewFile *.html           set textwidth=0
+autocmd BufRead,BufNewFile *.html           set ft=htmldjango
 
 autocmd BufRead,BufNewFile *.vala           setfiletype vala
 autocmd BufRead,BufNewFile *.vapi           setfiletype vala
 
 autocmd BufRead,BufNewFile *.js             setfiletype javascript.jquery
+
 " }}}
