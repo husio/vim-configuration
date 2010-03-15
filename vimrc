@@ -41,8 +41,6 @@ set ruler
 set showcmd
 set number
 set hlsearch
-set tabstop=4
-set shiftwidth=4
 set smarttab
 set expandtab
 set pastetoggle=<F11>
@@ -56,6 +54,10 @@ set foldmethod=marker
 set foldlevelstart=0
 "set path=$PWD/**
 "set cursorline
+if &ft == "python" || &ft == "javascript"
+    set tabstop=4
+    set shiftwidth=4
+endif 
 " }}}
 
 " {{{ plugin settings
