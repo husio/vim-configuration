@@ -42,7 +42,6 @@ set showcmd
 set number
 set hlsearch
 set smarttab
-set expandtab
 set pastetoggle=<F11>
 set autoindent
 set wildmode=list:longest,full
@@ -54,9 +53,10 @@ set foldmethod=marker
 set foldlevelstart=0
 "set path=$PWD/**
 "set cursorline
-if &ft == "python" || &ft == "javascript"
+if &ft == "python" || &ft == "javascript" || &ft == 'htmldjango'
     set tabstop=4
     set shiftwidth=4
+    set expandtab
 endif 
 " }}}
 
