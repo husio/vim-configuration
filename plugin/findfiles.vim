@@ -1,6 +1,6 @@
 " File:                findfiles.vim
 " Author:              Piotr Husiatyński <phusiatynski@gmail.com>
-" Version:             1.0
+" Version:             1.01
 " Licence:             MIT Licence
 
 
@@ -18,8 +18,22 @@ function! Find(name)
 	if len(l:filelist) < l:buff_height
 		let l:buff_height = len(l:filelist)
 	endif
+	call FindFileShowResults(l:filelist, l:buff_name, l:buff_height)
+endfunction
+
+function! FindSelected()
+	let l:search_str = expand("<cword>")
+	if len(l:search_str) == 0
+		echo "Select any string before using this search"
+		return
+	endif
+	let l:search_str = '*'. l:search_str .'*'
+	call Find(l:search_str)
+endfunction
+
+function! FindFileShowResults(results, buff_name, buff_height)
 	setl splitbelow
-	exec 'silent! '. l:buff_height . ' split '. l:buff_name
+	exec 'silent! '. a:buff_height . ' split '. a:buff_name
 	setl noshowcmd
 	setl noswapfile
 	setl nowrap
@@ -29,7 +43,7 @@ function! Find(name)
 	setl modifiable
 	setl buftype=nofile
 	setl bufhidden=delete
-	for file_path in l:filelist
+	for file_path in a:results
 		call append(line('$'), l:file_path)
 	endfor
 	norm gg"_dd
@@ -37,7 +51,8 @@ function! Find(name)
 	setl noinsertmode
 	
 	noremap <silent> <buffer> <CR>  :call FindFileOpen()<CR>
-    	map     <silent> <buffer> q     :q!<CR> 
+	map     <silent> <buffer> o     :call FindFileOpenClose()<CR>
+    	map     <silent> <buffer> q     :call FindFileClose()<CR> 
 endfunction
 
 function! FindFileOpen()
@@ -47,5 +62,15 @@ function! FindFileOpen()
 	wincmd j
 endfunction
 
+function! FindFileOpenClose()
+	call FindFileOpen()
+	call FindFileClose()
+endfunction
+
+function! FindFileClose()
+	bdelete "Find file (*"
+endfunction
+
 
 command! -nargs=1 Find :call Find("<args>")
+map      <Leader>Find  <Esc>:call FindSelected()<CR>
