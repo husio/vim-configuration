@@ -53,11 +53,9 @@ set foldmethod=marker
 set foldlevelstart=0
 "set path=$PWD/**
 "set cursorline
-if &ft == "python" || &ft == "javascript" || &ft == 'htmldjango'
-    set tabstop=4
-    set shiftwidth=4
-    set expandtab
-endif 
+set tabstop=4
+set shiftwidth=4
+set expandtab
 " }}}
 
 " {{{ plugin settings
