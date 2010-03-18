@@ -13,7 +13,7 @@ function! Find(name)
 		echo "No files found"
 		return
 	endif
-	let l:buff_name = 'Find file (' . len(l:filelist) . ') : '. a:name
+	let l:buff_name = '"Find file (' . len(l:filelist) . ') : '. a:name . '"'
 	let l:buff_height = s:max_buff_height
 	if len(l:filelist) < l:buff_height
 		let l:buff_height = len(l:filelist)
@@ -33,7 +33,7 @@ endfunction
 
 function! FindFileShowResults(results, buff_name, buff_height)
 	setl splitbelow
-	exec 'silent! '. a:buff_height . ' split '. a:buff_name
+	exec 'silent! '. a:buff_height . ' new '. a:buff_name
 	setl noshowcmd
 	setl noswapfile
 	setl nowrap
