@@ -2,7 +2,8 @@
 " Language:	Vala
 " Maintainers:	Emmanuele Bassi <ebassi@gnome.org>
 " 		Hans Vercammen <hveso3@gmail.com>
-" Last Change: 	2008-12-07
+" 		pancake <pancake@nopcode.org>
+" Last Change: 	2009-10-28
 " Filenames: 	*.vala *.vapi
 "
 " REFERENCES:
@@ -21,26 +22,27 @@ let s:vala_cpo_save = &cpo
 set cpo&vim
 
 " Types
-syn keyword valaType			bool char constpointer double float size_t ssize_t string unichar void
+syn keyword valaType			bool char double float size_t ssize_t string unichar void
 syn keyword valaType 			int int8 int16 int32 int64 long short
 syn keyword valaType 			uint uint8 uint16 uint32 uint64 ulong ushort
 " Storage keywords
 syn keyword valaStorage			class delegate enum errordomain interface namespace struct
 " repeat / condition / label
 syn keyword valaRepeat			break continue do for foreach return while
-syn keyword valaConditional		else if switch
+syn keyword valaConditional		else if switch assert
 " User Labels
 syn keyword valaLabel			case default
 
 " Modifiers
 syn keyword valaModifier		abstract const dynamic ensures extern inline internal override 
 syn keyword valaModifier 		private protected public requires signal static virtual volatile weak
+syn keyword valaModifier 		async owned unowned
 " Constants
 syn keyword valaConstant		false null true
 " Exceptions
 syn keyword valaException		try catch finally throw
 " Unspecified Statements
-syn keyword valaUnspecifiedStatement	as base construct delete get in is lock new out params ref sizeof set this throws typeof using value var yield yields
+syn keyword valaUnspecifiedStatement	as base construct delete get in is lock new out params ref sizeof set this throws typeof using value var yield
 
 " Comments
 syn cluster valaCommentGroup 		contains=valaTodo
