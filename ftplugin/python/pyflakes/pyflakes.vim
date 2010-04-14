@@ -22,10 +22,20 @@ if !exists('g:pyflakes_builtins')
 endif
 
 if !exists("b:did_python_init")
+    let b:did_python_init = 0
+
+    if !has('python')
+        echoerr "Error: the pyflakes.vim plugin requires Vim to be compiled with +python"
+        finish
+    endif
+
     python << EOF
 import vim
 import os.path
 import sys
+
+if sys.version_info[:2] < (2, 5):
+    raise AssertionError('Vim must be compiled with Python 2.5 or higher; you have ' + sys.version)
 
 # get the directory this script is in: the pyflakes python module should be installed there.
 scriptdir = os.path.join(os.path.dirname(vim.eval('expand("<sfile>")')), 'pyflakes')
@@ -45,7 +55,11 @@ class blackhole(object):
 
 def check(buffer):
     filename = buffer.name
-    contents = '\n'.join(buffer[:])
+    contents = '\n'.join(buffer[:]) + '\n'
+
+    vimenc = vim.eval('&encoding')
+    if vimenc:
+        contents = contents.decode(vimenc)
 
     builtins = []
     try:
@@ -66,7 +80,7 @@ def check(buffer):
             lineno, offset, line = value[1][1:]
         except IndexError:
             lineno, offset, line = 1, 0, ''
-        if line.endswith("\n"):
+        if line and line.endswith("\n"):
             line = line[:-1]
 
         return [SyntaxError(filename, lineno, offset, str(value))]
@@ -80,6 +94,10 @@ def vim_quote(s):
     return s.replace("'", "''")
 EOF
     let b:did_python_init = 1
+endif
+
+if !b:did_python_init
+    finish
 endif
 
 au BufLeave <buffer> call s:ClearPyflakes()
