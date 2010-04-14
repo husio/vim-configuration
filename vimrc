@@ -7,15 +7,15 @@ if has("gui_running")
     set guioptions-=e
     set guifont=Terminus\ 8
     "set guifont=Monaco\ 9
-    "colorsche bclear
+    colorsche bclear
     set mousehide
     "set guifont=iconsolata\ 8
     "colorsche bclear
-    colorscheme rdark
+    "colorscheme rdark
 elseif (&term == 'xterm-color')
     set t_Co=256
     "colorscheme soso
-    colorscheme mustang
+    colorscheme zenburn
 else
     set background=dark
     colorscheme delek
@@ -58,12 +58,6 @@ set shiftwidth=4
 set expandtab
 " }}}
 
-" {{{ plugin settings
-" calendar
-let g:calendar_diary = "~/.calendar"
-" }}}
-
-
 " {{{ filetype configuration
 filetype on
 filetype plugin on
@@ -80,5 +74,7 @@ autocmd BufRead,BufNewFile *.vala           setfiletype vala
 autocmd BufRead,BufNewFile *.vapi           setfiletype vala
 
 autocmd BufRead,BufNewFile *.js             setfiletype javascript.jquery
+"}}}
 
-" }}}
+"let g:EclimHome = '/usr/share/vim/vimfiles/eclim'
+"let g:EclimEclipseHome = '/usr/share/eclipse'

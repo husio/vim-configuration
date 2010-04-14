@@ -2,7 +2,18 @@
 " Author:              Piotr Husiatyński <phusiatynski@gmail.com>
 " Version:             1.01
 " Licence:             MIT Licence
-
+"
+"
+" Usage
+" -----
+" :Find <file_name> [<find_params>]    show list of files that matches
+" \Find                                call :Find with *<cword>* as search string
+"
+"  Results window:
+"    select any file any press <Return> to open it
+"    press 'o' to open selected file and close results window
+"    press 'q' to close results window 
+"
 
 let s:max_buff_height = 30
 
@@ -21,12 +32,7 @@ function! Find(args)
         echo "No files found"
         return
     endif
-    let l:buff_name = '"Find file (' . len(l:filelist) . ') : '. l:file_name . '"'
-    let l:buff_height = s:max_buff_height
-    if len(l:filelist) < l:buff_height
-        let l:buff_height = len(l:filelist)
-    endif
-    call FindFileShowResults(l:filelist, l:buff_name, l:buff_height)
+    call FindFileShowResults(l:filelist)
 endfunction
 
 function! FindSelected()
@@ -40,8 +46,13 @@ function! FindSelected()
 endfunction
 
 function! FindFileShowResults(results, buff_name, buff_height)
+    let l:buff_height = s:max_buff_height
+    if len(l:filelist) < l:buff_height
+        let l:buff_height = len(l:filelist)
+    endif
+    let l:info = '"Find file (' . len(l:filelist) . ') : '. l:file_name . '"'
     setl splitbelow
-    exec 'silent! '. a:buff_height . ' new '. a:buff_name
+    exec 'silent! '. a:buff_height . ' new __findfiles__'
     setl noshowcmd
     setl noswapfile
     setl nowrap
