@@ -76,5 +76,9 @@ autocmd BufRead,BufNewFile *.vapi           setfiletype vala
 autocmd BufRead,BufNewFile *.js             setfiletype javascript.jquery
 "}}}
 
-"let g:EclimHome = '/usr/share/vim/vimfiles/eclim'
-"let g:EclimEclipseHome = '/usr/share/eclipse'
+
+" {{{ yankring plugin settings
+let g:yankring_history_dir = expand("$HOME") . "/.yankring"
+let g:yankring_min_element_length = 1
+let g:yankring_max_history = 20
+" }}}
