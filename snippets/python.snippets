@@ -19,11 +19,25 @@ snippet parser
 
 snippet ifname
 	def main():
-		${1:pass}
-		$2
+		$1
 	
 	if __name__ == '__main__':
 		main()
 
 snippet trace
 	import ipdb; ipdb.set_trace()
+
+snippet unittest
+	# -*- coding: `&enc` -*-
+
+	import unittest
+
+
+	class ${1:BasicTest}(unittest.TestCase):
+		${2}
+
+
+
+
+	if __name__ == '__main__':
+	    unittest.main()
