@@ -15,7 +15,7 @@ if has("gui_running")
 elseif (&term == 'xterm-color')
     set t_Co=256
     "colorscheme soso
-    colorscheme zenburn
+    colorscheme fu
 else
     set background=dark
     colorscheme delek

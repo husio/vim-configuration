@@ -23,7 +23,6 @@ snippet ifname
 	
 	if __name__ == '__main__':
 		main()
-
 snippet trace
 	import ipdb; ipdb.set_trace()
 
@@ -33,10 +32,8 @@ snippet unittest
 	import unittest
 
 
-	class ${1:BasicTest}(unittest.TestCase):
+	class ${1:BaseTest}(unittest.TestCase):
 		${2}
-
-
 
 
 	if __name__ == '__main__':
