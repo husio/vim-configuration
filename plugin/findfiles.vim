@@ -1,11 +1,21 @@
 " File:                findfiles.vim
 " Author:              Piotr Husiatyński <phusiatynski@gmail.com>
-" Version:             1.01
+" Version:             1.02
 " Licence:             MIT Licence
 
+" single load sentry
+if (exists("g:loaded_findfiles") && g:loaded_findfiles)
+    finish
+endif
+let g:loaded_findfiles = 1
 
-let s:max_buff_height = 30
-
+" set up some default values, but do not overwrite them
+if (!exists("g:findfiles_single_result_autoload"))
+    let g:findfiles_single_result_autoload = 1
+endif
+if (!exists("g:findfiles_max_buff_height"))
+    let g:findfiles_max_buff_height = 30
+endif
 
 function! Find(args)
     let l:args_list = split(a:args)
@@ -22,7 +32,13 @@ function! Find(args)
         return
     endif
     let l:buff_name = '"Find file (' . len(l:filelist) . ') : '. l:file_name . '"'
-    let l:buff_height = s:max_buff_height
+    let l:buff_height = g:findfiles_max_buff_height
+    " if only one file was found, optionally load it without showing result list
+    if len(l:filelist) == 1 &&  g:findfiles_single_result_autoload
+        exec "edit ". l:filelist[0]
+        echon "  Only one file was found. Loading: ". l:filelist[0]
+        return
+    endif
     if len(l:filelist) < l:buff_height
         let l:buff_height = len(l:filelist)
     endif
@@ -60,7 +76,7 @@ function! FindFileShowResults(results, buff_name, buff_height)
 
     noremap <silent> <buffer> <CR>  :call FindFileOpen()<CR>
     map     <silent> <buffer> o     :call FindFileOpenClose()<CR>
-        map     <silent> <buffer> q     :call FindFileClose()<CR>
+    map     <silent> <buffer> q     :call FindFileClose()<CR>
 endfunction
 
 function! FindFileOpen()
