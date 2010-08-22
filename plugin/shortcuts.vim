@@ -24,8 +24,7 @@ map      <Leader>ma     <Esc>1GgqG<CR>`a
 
 map      <Leader>t      <Esc>:il TODO\|FIXME\|REMOVE\|FIX <CR>
 
-map      <C-e>          <Esc>:FuzzyFinderFile <CR>
-imap     <C-e>          <Esc>:FuzzyFinderFile <CR>
+map      <Leader>note   <Esc>:tabnew ~/.vimnotes<CR><Esc>:set ft=rst<CR>
 
 
 map <S-Insert> <MiddleMouse>

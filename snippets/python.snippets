@@ -1,40 +1,53 @@
 snippet #!
 	#!/usr/bin/env python
 	# -*- coding: `&enc` -*-
-
 snippet #enc
 	# -*- coding: `&enc` -*-
-	
 snippet __info__
 	__version__ = '${1:0.1}'
 	__author__ = 'Piotr Husiatynski <phusiatynski@gmail.com>'
 	__revision__ = '$Id$'
 	${2}
-
 snippet parser
 	parser = optparse.OptionParser('usage: %prog ${1}')
 	parser.add_option(${2}
 	(options, args) = parser.parse_args()
 	${3}
-
 snippet ifname
 	def main():
 		$1
-	
+
 	if __name__ == '__main__':
 		main()
 snippet trace
 	import ipdb; ipdb.set_trace()
-
 snippet unittest
 	# -*- coding: `&enc` -*-
 
 	import unittest
 
 
-	class ${1:BaseTest}(unittest.TestCase):
+	class ${1:BasicTest}(unittest.TestCase):
 		${2}
-
 
 	if __name__ == '__main__':
 	    unittest.main()
+snippet setuptools
+	#!/usr/bin/env python
+	# -*- coding: utf-8 -*-
+
+	from setuptools import setup, find_packages
+
+	setup(
+		name="${1}",
+		version="0.1",
+		author="Piotr Husiatyński",
+		author_email="phusiatynski@gmail.com",
+		license = "MIT",
+		description="${2}",
+		packages = find_packages("src"),
+		package_dir = {"": "src"}
+		entry_points = {},
+		tests_require=['nose', 'mock'],
+		test_suite='nose.collector'
+	)

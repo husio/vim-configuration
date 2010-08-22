@@ -5,9 +5,9 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=m
     set guioptions-=e
-    set guifont=Terminus\ 8
-    "set guifont=Monaco\ 9
-    colorsche bclear
+    "set guifont=Terminus\ 8
+    set guifont=Monaco\ 7
+    colorsche fnaqevan
     set mousehide
     "set guifont=iconsolata\ 8
     "colorsche bclear
@@ -15,7 +15,7 @@ if has("gui_running")
 elseif (&term == 'xterm-color')
     set t_Co=256
     "colorscheme soso
-    colorscheme fu
+    colorscheme lucius
 else
     set background=dark
     colorscheme delek
@@ -81,4 +81,9 @@ autocmd BufRead,BufNewFile *.js             setfiletype javascript.jquery
 let g:yankring_history_dir = expand("$HOME") . "/.yankring"
 let g:yankring_min_element_length = 1
 let g:yankring_max_history = 20
+" }}}
+
+" {{{ vim notes plugin http://www.vim.org/scripts/script.php?script_id=828
+let g:VN_DefaultDir = "~/.vim_notes"
+let g:VN_DefaultBrowser = "mozilla"
 " }}}
