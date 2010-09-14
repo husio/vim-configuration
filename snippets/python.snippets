@@ -9,13 +9,12 @@ snippet __info__
 	__revision__ = '$Id$'
 	${2}
 snippet parser
-	parser = optparse.OptionParser('usage: %prog ${1}')
+	parser = optparse.OptionParser('usage: %prog ${1:<options>}')
 	parser.add_option(${2}
 	(options, args) = parser.parse_args()
-	${3}
 snippet ifname
 	def main():
-		$1
+		${1}
 
 	if __name__ == '__main__':
 		main()
