@@ -56,7 +56,7 @@ set foldlevelstart=0
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set nolazyredraw 
+set nolazyredraw
 set magic
 " }}}
 
@@ -94,6 +94,8 @@ autocmd BufRead,BufNewFile *.vala           setfiletype vala
 autocmd BufRead,BufNewFile *.vapi           setfiletype vala
 
 autocmd BufRead,BufNewFile *.js             setfiletype javascript.jquery
+" remove white characters from end of each line
+autocmd BufWritePre        *                :%s/\s\+$//e
 "}}}
 
 
