@@ -56,6 +56,26 @@ set foldlevelstart=0
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set nolazyredraw 
+set magic
+" }}}
+
+" {{{
+set laststatus=2
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
+
+function! CurDir()
+    let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
+    return curdir
+endfunction
+
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    else
+        return ''
+    endif
+endfunction
 " }}}
 
 " {{{ filetype configuration
