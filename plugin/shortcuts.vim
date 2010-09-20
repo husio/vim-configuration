@@ -13,7 +13,9 @@ map  <F8>   :NERDTreeToggle<CR><Esc>
 map      <C-t>      :tabnew<CR>
 imap     <C-t>      :<Esc>tabnew<CR>i
 map      <M-h>      :tabprev<CR>
+imap     <M-h>      :<Esc>tabprev<CR>i
 map      <M-l>      :tabnext<CR>
+imap     <M-l>      :<Esc>tabnext<CR>i
 " }}}
 
 " {{{ window move
