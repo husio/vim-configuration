@@ -1,31 +1,27 @@
-" {{{ pathogen
+" {{{ pathogen init
 call pathogen#runtime_append_all_bundles()
 " }}}
 
-" {{{ colorscheme
+" {{{ custom vim mode settings (colorscheme, guioptions, etc)
 if has("gui_running")
     set guioptions-=r
     set guioptions-=L
     set guioptions-=T
     set guioptions-=m
     set guioptions-=e
-    "set guifont=Terminus\ 8
-    set guifont=Mono\ 8
-    colorsche summerfruit
+    set guifont=Monaco\ 8
+    colorsche symfony
     set mousehide
-    "set guifont=iconsolata\ 8
-    "colorsche bclear
-    "colorscheme rdark
 elseif (&term == 'xterm-color')
     set t_Co=256
-    colorscheme fu
+    colorscheme symfony
 else
     set background=dark
-    colorscheme delek
+    colorscheme ron
 endif
 " }}}
 
-" {{{ printer
+" {{{ printing setup
 set printdevice=LaserJet
 "set printheader="%<%f%h%m%=Strona %N"
 set printencoding=iso-8859-2
@@ -63,7 +59,7 @@ set nolazyredraw
 set magic
 " }}}
 
-" {{{
+" {{{ line status builder
 set laststatus=2
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
 
@@ -81,7 +77,7 @@ function! HasPaste()
 endfunction
 " }}}
 
-" {{{ filetype configuration
+" {{{ filetype related configuration
 filetype on
 filetype plugin on
 filetype indent on
@@ -93,22 +89,16 @@ autocmd BufRead,BufNewFile *.mkd            setfiletype mkd
 autocmd BufRead,BufNewFile *.html           set textwidth=0
 autocmd BufRead,BufNewFile *.html           set ft=htmldjango
 
-autocmd BufRead,BufNewFile *.vala           setfiletype vala
-autocmd BufRead,BufNewFile *.vapi           setfiletype vala
-
 autocmd BufRead,BufNewFile *.js             setfiletype javascript.jquery
 " remove white characters from end of each line
 autocmd BufWritePre        *                :%s/\s\+$//e
 "}}}
 
 
-" {{{ yankring plugin settings
+" {{{ yankring plugin setup
 let g:yankring_history_dir = expand("$HOME") . "/.yankring"
+" create yankring directory if does not exists
+call system("[ -d " . g:yankring_history_dir . " ] || mkdir " . g:yankring_history_dir)
 let g:yankring_min_element_length = 1
-let g:yankring_max_history = 20
-" }}}
-
-" {{{ vim notes plugin http://www.vim.org/scripts/script.php?script_id=828
-let g:VN_DefaultDir = "~/.vim_notes"
-let g:VN_DefaultBrowser = "mozilla"
+let g:yankring_max_history = 40
 " }}}
