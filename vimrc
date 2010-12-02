@@ -6,16 +6,15 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=e
     "set guifont=Terminus\ 8
-    set guifont=Monaco\ 7
-    colorsche fnaqevan
+    set guifont=Mono\ 8
+    colorsche summerfruit
     set mousehide
     "set guifont=iconsolata\ 8
     "colorsche bclear
     "colorscheme rdark
 elseif (&term == 'xterm-color')
     set t_Co=256
-    "colorscheme soso
-    colorscheme asu1dark
+    colorscheme fu
 else
     set background=dark
     colorscheme delek
@@ -65,7 +64,7 @@ set laststatus=2
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
 
 function! CurDir()
-    let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
+    let curdir = substitute(getcwd(), '/home/piotrek/', "~/", "g")
     return curdir
 endfunction
 

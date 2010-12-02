@@ -1,16 +1,17 @@
 snippet main
-	int main(int argc, char *argv[])
+	int
+	main(int argc, char *argv[])
 	{
 		${1}
 		return 0;
 	}
 snippet ifdef
-	#ifndef ${1:__`toupper(expand("%:t:r"))`__}
+	#ifndef ${1:`toupper(expand("%:t:r"))`_H}
 	#define $1
 
 	${2}
 
-	#endif /* $1 */
+	#endif
 snippet ?
 	${1:/* condition */} ? ${2:a} : ${3:b}
 snippet do
