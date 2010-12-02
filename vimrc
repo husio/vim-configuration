@@ -1,3 +1,7 @@
+" {{{ pathogen
+call pathogen#runtime_append_all_bundles()
+" }}}
+
 " {{{ colorscheme
 if has("gui_running")
     set guioptions-=r
