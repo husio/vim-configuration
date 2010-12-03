@@ -16,3 +16,6 @@
 [submodule "bundle/yankring"]
 	path = bundle/yankring
 	url = https://github.com/ornicar/vim-yankring.git
+[submodule "bundle/gist"]
+	path = bundle/gist
+	url = https://github.com/mattn/gist-vim.git
