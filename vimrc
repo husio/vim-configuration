@@ -10,11 +10,11 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=e
     set guifont=Monaco\ 8
-    colorsche symfony
+    colorsche jhdark
     set mousehide
 elseif (&term == 'xterm-color')
     set t_Co=256
-    colorscheme symfony
+    colorscheme jhdark
 else
     set background=dark
     colorscheme ron
