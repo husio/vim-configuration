@@ -9,8 +9,8 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=m
     set guioptions-=e
-    set guifont=Monaco\ 8
-    colorsche jhdark
+    set guifont=Terminus\ 8
+    colorsche rdark
     set mousehide
 elseif (&term == 'xterm-color')
     set t_Co=256
