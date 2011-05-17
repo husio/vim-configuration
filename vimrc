@@ -93,7 +93,7 @@ autocmd BufReadPost        PKGBUILD         setfiletype PKGBUILD
 autocmd BufRead,BufNewFile *.mkd            setfiletype mkd
 autocmd BufRead,BufNewFile *.html           set textwidth=0
 autocmd BufRead,BufNewFile *.html           set ft=htmldjango
-autocmd BufRead,BufNewFile *.ejs            set ft=ejs
+autocmd BufRead,BufNewFile *.ejs            set ft=jst
 
 
 autocmd BufRead,BufNewFile *.js             setfiletype javascript.jquery
