@@ -2,25 +2,6 @@
 call pathogen#runtime_append_all_bundles()
 " }}}
 
-" {{{ custom vim mode settings (colorscheme, guioptions, etc)
-if has("gui_running")
-    set guioptions-=r
-    set guioptions-=L
-    set guioptions-=T
-    set guioptions-=m
-    set guioptions-=e
-    set guifont=Terminus\ 8
-    colorsche rdark
-    set mousehide
-elseif (&term == 'xterm-color')
-    set t_Co=256
-    colorscheme jhdark
-else
-    set background=dark
-    colorscheme ron
-endif
-" }}}
-
 " {{{ printing setup
 set printdevice=LaserJet
 "set printheader="%<%f%h%m%=Strona %N"
@@ -59,6 +40,30 @@ set nolazyredraw
 set magic
 " }}}
 
+
+" {{{ custom vim mode settings (colorscheme, guioptions, etc)
+if has("gui_running")
+    set guioptions-=r
+    set guioptions-=L
+    set guioptions-=T
+    set guioptions-=m
+    set guioptions-=e
+    "set guifont=Terminus\ 8
+    "set guifont=Fixed\ 7
+    set guifont=Monaco\ 8
+    colorsche kellys
+    set mousehide
+elseif (&term == 'xterm-color')
+    set t_Co=256
+    colorscheme desert
+    colorscheme 256-jungle
+else
+    set background=dark
+    colorscheme ron
+endif
+" }}}
+
+
 " {{{ line status builder
 set laststatus=2
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
@@ -88,6 +93,8 @@ autocmd BufReadPost        PKGBUILD         setfiletype PKGBUILD
 autocmd BufRead,BufNewFile *.mkd            setfiletype mkd
 autocmd BufRead,BufNewFile *.html           set textwidth=0
 autocmd BufRead,BufNewFile *.html           set ft=htmldjango
+autocmd BufRead,BufNewFile *.ejs            set ft=ejs
+
 
 autocmd BufRead,BufNewFile *.js             setfiletype javascript.jquery
 " remove white characters from end of each line
