@@ -25,3 +25,9 @@
 [submodule "bundle/jst"]
 	path = bundle/jst
 	url = https://github.com/briancollins/vim-jst.git
+[submodule "bundle/golang"]
+	path = bundle/golang
+	url = https://github.com/jnwhiteh/vim-golang.git
+[submodule "bundle/jslint"]
+	path = bundle/jslint
+	url = https://github.com/hallettj/jslint.vim.git

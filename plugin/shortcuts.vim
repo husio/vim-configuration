@@ -30,6 +30,7 @@ map      <leader>=      maHmbgg=Gg'bztg`a
 map      <Leader>de     :%s/\s\+$//<CR>
 map      <Leader>spell  <Esc>:set spelllang=pl<CR><Esc>:set spell<CR>
 map      <Leader>color  <Esc>:call ColorschemeChooserToggle()<CR>
+map      <Leader>cc     <Esc>:call ColorSelector()<CR>
 map      <Leader>ma     <Esc>1GgqG<CR>`a
 " }}}
 
@@ -41,4 +42,8 @@ map      <Leader>note   <Esc>:tabnew ~/.vimnotes<CR><Esc>:set ft=rst<CR>
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
 imap <S-Insert> <MiddleMouse>
+" }}}
+
+" {{{ latex
+imap <C-i> <Esc>bcw\textit{}<Esc>hpi
 " }}}

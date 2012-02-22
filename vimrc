@@ -11,10 +11,8 @@ set printfont=Mono\ 8
 " }}}
 
 " {{{ main configuration
-set mouse=a
-"set spelllang=pl
-"set spell
 syntax on
+set mouse=a
 set nocompatible
 set nobackup
 set ruler
@@ -31,8 +29,6 @@ set textwidth=78
 set fileencodings=utf-8
 set foldmethod=marker
 set foldlevelstart=0
-"set path=$PWD/**
-"set cursorline
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -48,10 +44,8 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=m
     set guioptions-=e
-    "set guifont=Terminus\ 8
-    "set guifont=Fixed\ 7
-    set guifont=Monaco\ 8
-    colorsche kellys
+    set guifont=Terminus\ 8
+    colorsche paintbox
     set mousehide
 elseif (&term == 'xterm-color')
     set t_Co=256
@@ -94,6 +88,7 @@ autocmd BufRead,BufNewFile *.mkd            setfiletype mkd
 autocmd BufRead,BufNewFile *.html           set textwidth=0
 autocmd BufRead,BufNewFile *.html           set ft=htmldjango
 autocmd BufRead,BufNewFile *.ejs            set ft=jst
+autocmd BufRead,BufNewFile *.go             set ft=go
 
 
 autocmd BufRead,BufNewFile *.js             setfiletype javascript.jquery
@@ -107,5 +102,5 @@ let g:yankring_history_dir = expand("$HOME") . "/.yankring"
 " create yankring directory if does not exists
 call system("[ -d " . g:yankring_history_dir . " ] || mkdir " . g:yankring_history_dir)
 let g:yankring_min_element_length = 1
-let g:yankring_max_history = 40
+let g:yankring_max_history = 100
 " }}}
