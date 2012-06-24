@@ -45,12 +45,12 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=e
     set guifont=Terminus\ 8
-    colorsche paintbox
+    colorsche wombat
     set mousehide
-elseif (&term == 'xterm-color')
+elseif (&term == 'xterm-256color')
     set t_Co=256
-    colorscheme desert
     colorscheme 256-jungle
+    colorscheme 256-graypurple
 else
     set background=dark
     colorscheme ron
