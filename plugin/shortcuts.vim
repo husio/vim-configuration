@@ -34,16 +34,15 @@ map      <Leader>cc     <Esc>:call ColorSelector()<CR>
 map      <Leader>ma     <Esc>1GgqG<CR>`a
 " }}}
 
-map      <Leader>t      <Esc>:il TODO\|FIXME\|REMOVE\|FIX <CR>
-
-map      <Leader>note   <Esc>:tabnew ~/.vimnotes<CR><Esc>:set ft=rst<CR>
-
 " {{{ mouse keys
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
-imap <S-Insert> <MiddleMouse>
+map     <S-Insert> <MiddleMouse>
+map!    <S-Insert> <MiddleMouse>
+imap    <S-Insert> <MiddleMouse>
 " }}}
 
-" {{{ latex
-imap <C-i> <Esc>bcw\textit{}<Esc>hpi
+
+" {{{ ctrlp plugin
+map      <leader>p      <Esc>:call CtrlP()<CR>
+" }}}
+
 " }}}

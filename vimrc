@@ -1,15 +1,3 @@
-" {{{ pathogen init
-call pathogen#runtime_append_all_bundles()
-" }}}
-
-" {{{ printing setup
-set printdevice=LaserJet
-"set printheader="%<%f%h%m%=Strona %N"
-set printencoding=iso-8859-2
-set printfont=curier
-set printfont=Mono\ 8
-" }}}
-
 " {{{ main configuration
 syntax on
 set mouse=a
@@ -44,13 +32,15 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=m
     set guioptions-=e
-    set guifont=Terminus\ 8
+    "set guifont=Terminus\ 8
+    set guifont=progsole\ 6
     colorsche wombat
     set mousehide
 elseif (&term == 'xterm-256color')
     set t_Co=256
     colorscheme 256-jungle
     colorscheme 256-graypurple
+    "colorscheme ir_black
 else
     set background=dark
     colorscheme ron
