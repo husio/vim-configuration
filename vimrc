@@ -1,5 +1,5 @@
 "" {{{ main configuration
-syntax on
+syntax off
 set mouse=a
 set nocompatible
 set nobackup
@@ -24,25 +24,21 @@ set tags+=.tags
 set lazyredraw
 set scrolljump=10
 set background=dark
+set backupdir=/tmp//
+set directory=/tmp//
+set undodir=/tmp//
 " }}}
 
 
-" {{{ custom vim mode settings (colorscheme, guioptions, etc)
+" {{{ gui
 if has("gui_running")
     set guioptions-=r
     set guioptions-=L
     set guioptions-=T
     set guioptions-=m
     set guioptions-=e
-    set guifont=Terminus\ 8
-    colorscheme badwolf
+    set guifont=terminus\ 8
     set mousehide
-    let g:Powerline_symbols = 'fancy'
-elseif (&term == 'xterm') || (&term == 'xterm-256color') || (&term == 'screen-256color')
-    set t_Co=256
-    "colorscheme badwolf
-    "colorscheme monochrome
-	colorscheme x
 endif
 " }}}
 
@@ -54,10 +50,11 @@ filetype indent on
 
 autocmd BufNewFile         *                startinsert
 autocmd BufWritePre        *                :%s/\s\+$//e
-autocmd FileType go                         setl et! textwidth=0 colorcolumn=79
-autocmd FileType python                     setl et! textwidth=79 colorcolumn=79 tabstop=4 shiftwidth=4 expandtab
-autocmd FileType markdown                   setl et! textwidth=79 colorcolumn=79
-autocmd BufNewFile,BufReadPost *.js         setl colorcolumn=79
+autocmd FileType go                         setl textwidth=0 colorcolumn=79 noexpandtab
+autocmd FileType python                     setl textwidth=79 colorcolumn=79 tabstop=4 shiftwidth=4 expandtab
+autocmd FileType markdown                   setl textwidth=79 colorcolumn=79 tabstop=2 shiftwidth=4 expandtab
+autocmd FileType javascript                 setl colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
+autocmd FileType html,gohtmltmpl,htmldjango setl tabstop=2 shiftwidth=2 expandtab
 autocmd FileType make                       setl noexpandtab
 "}}}
 
@@ -87,36 +84,28 @@ imap     <S-Insert> <MiddleMouse>
 " }}}
 
 
-" {{{ syntastic
-let g:syntastic_check_on_open=1
-let g:syntastic_error_symbol='e!'
-let g:syntastic_warning_symbol='w!'
-let g:syntastic_go_checkers = ['go', 'govet']
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_wq = 0
-"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-"
-map      check        <Esc>:SyntasticCheck<CR>
+" {{{ ale
+let g:ale_sign_error = 'e'
+let g:ale_sign_warning = 'w'
+let g:ale_linters = {'go': ['go build', 'go vet']}
 " }}}
 
-
-" {{{ yankring plugin setup
-let g:yankring_history_dir = expand("$HOME") . "/.yankring"
-" create yankring directory if does not exists
-call system("[ -d " . g:yankring_history_dir . " ] || mkdir " . g:yankring_history_dir)
-let g:yankring_min_element_length = 1
-let g:yankring_max_history = 100
-" }}}
 
 
 " {{{ go
 let g:go_highlight_extra_types = 0
 let g:go_fmt_command = "goimports"
 let g:go_play_open_browser = 0
+let g:go_def_mapping_enabled = 0
+let g:go_template_autocreate = 0
 " }}}
 
 
+" {{{ elm
+let g:elm_format_autosave = 1
+" }}}
+
 set shell=/bin/sh
+
 
 call pathogen#infect()
