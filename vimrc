@@ -29,6 +29,7 @@ set directory=/tmp//
 set undodir=/tmp//
 " }}}
 
+colorscheme x
 
 " {{{ gui
 if has("gui_running")
@@ -38,6 +39,7 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=e
     set guifont=terminus\ 8
+    colorscheme desert
     set mousehide
 endif
 " }}}
@@ -52,7 +54,7 @@ autocmd BufNewFile         *                startinsert
 autocmd BufWritePre        *                :%s/\s\+$//e
 autocmd FileType go                         setl textwidth=0 colorcolumn=79 noexpandtab
 autocmd FileType python                     setl textwidth=79 colorcolumn=79 tabstop=4 shiftwidth=4 expandtab
-autocmd FileType markdown                   setl textwidth=79 colorcolumn=79 tabstop=2 shiftwidth=4 expandtab
+autocmd FileType markdown                   setl colorcolumn=79 tabstop=2 shiftwidth=4 expandtab
 autocmd FileType javascript                 setl colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
 autocmd FileType html,gohtmltmpl,htmldjango setl tabstop=2 shiftwidth=2 expandtab
 autocmd FileType make                       setl noexpandtab
@@ -60,12 +62,12 @@ autocmd FileType make                       setl noexpandtab
 
 
 " {{{ tab move
-map      <C-t>      :tabnew<CR>
-imap     <C-t>      :<Esc>tabnew<CR>i
-map      <M-h>      :tabprev<CR>
-imap     <M-h>      :<Esc>tabprev<CR>i
-map      <M-l>      :tabnext<CR>
-imap     <M-l>      :<Esc>tabnext<CR>i
+"map      <C-t>      :tabnew<CR>
+"imap     <C-t>      :<Esc>tabnew<CR>i
+"map      <M-h>      :tabprev<CR>
+"imap     <M-h>      :<Esc>tabprev<CR>i
+"map      <M-l>      :tabnext<CR>
+"imap     <M-l>      :<Esc>tabnext<CR>i
 " }}}
 
 
@@ -88,6 +90,11 @@ imap     <S-Insert> <MiddleMouse>
 let g:ale_sign_error = 'e'
 let g:ale_sign_warning = 'w'
 let g:ale_linters = {'go': ['go build', 'go vet']}
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_keep_list_window_open = 0
 " }}}
 
 
