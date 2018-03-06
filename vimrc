@@ -1,13 +1,13 @@
 "" {{{ main configuration
 syntax off
 set mouse=a
-set nocompatible
 set nobackup
 set ruler
 set showcmd
 set number
 set hlsearch
 set smarttab
+set hidden
 set pastetoggle=<F11>
 set autoindent
 set wildmode=list:longest,full
@@ -16,12 +16,9 @@ set enc=utf8
 set fileencodings=utf-8
 set foldmethod=marker
 set foldlevelstart=0
-set nolazyredraw
-set magic
 set laststatus=2
 set timeoutlen=400
 set tags+=.tags
-set lazyredraw
 set scrolljump=10
 set background=dark
 set backupdir=/tmp//
@@ -52,23 +49,14 @@ filetype indent on
 
 autocmd BufNewFile         *                startinsert
 autocmd BufWritePre        *                :%s/\s\+$//e
-autocmd FileType go                         setl textwidth=0 colorcolumn=79 noexpandtab
 autocmd FileType python                     setl textwidth=79 colorcolumn=79 tabstop=4 shiftwidth=4 expandtab
-autocmd FileType markdown                   setl colorcolumn=79 tabstop=2 shiftwidth=4 expandtab
+autocmd FileType go                         setl colorcolumn=79 noexpandtab
+autocmd FileType markdown                   setl colorcolumn=79 tabstop=2 shiftwidth=4 expandtab spell spelllang=en_us
 autocmd FileType javascript                 setl colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
 autocmd FileType html,gohtmltmpl,htmldjango setl tabstop=2 shiftwidth=2 expandtab
 autocmd FileType make                       setl noexpandtab
 "}}}
 
-
-" {{{ tab move
-"map      <C-t>      :tabnew<CR>
-"imap     <C-t>      :<Esc>tabnew<CR>i
-"map      <M-h>      :tabprev<CR>
-"imap     <M-h>      :<Esc>tabprev<CR>i
-"map      <M-l>      :tabnext<CR>
-"imap     <M-l>      :<Esc>tabnext<CR>i
-" }}}
 
 
 " {{{ window move
@@ -111,6 +99,8 @@ let g:go_template_autocreate = 0
 " {{{ elm
 let g:elm_format_autosave = 1
 " }}}
+
+set cm=blowfish2
 
 set shell=/bin/sh
 
