@@ -1,6 +1,6 @@
 "" {{{ main configuration
 syntax off
-set mouse=a
+set mouse=v
 set nobackup
 set ruler
 set showcmd
