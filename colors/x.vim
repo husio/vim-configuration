@@ -1,49 +1,49 @@
 " Vim color file
-" Maintainer:	Piotr Husiatyński <phusiatynski@gmail.com>
+" Maintainer:  Piotr Husiatyński <phusiatynski@gmail.com>
+"
+" http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
 
 set background=dark
 set t_Co=256
 let g:colors_name="x"
 
+if exists("syntax_on")
+  syntax reset
+endif
 
-hi Normal	    ctermfg=255         ctermbg=233        cterm=None
-hi SpecialKey	ctermfg=87          ctermbg=None       cterm=Bold
-hi Directory	ctermfg=76          ctermbg=None       cterm=None
-hi ErrorMsg     ctermfg=124         ctermbg=233        cterm=None
-hi PreProc	    ctermfg=246         ctermbg=None       cterm=Bold
-hi Search	    ctermfg=233         ctermbg=46        cterm=Bold
-hi Type		    ctermfg=246         ctermbg=None       cterm=Bold
-hi Statement	ctermfg=246         ctermbg=None       cterm=None
-hi Comment	    ctermfg=240         ctermbg=None       cterm=None
-hi Identifier	ctermfg=111         ctermbg=None       cterm=Bold
-hi DiffText	    ctermfg=88          ctermbg=250        cterm=None
-hi Constant	    ctermfg=246         ctermbg=None       cterm=None
-hi Todo         ctermfg=226         ctermbg=None       cterm=Bold
-hi Error	    ctermfg=233         ctermbg=124        cterm=Bold
-hi Special	    ctermfg=160         ctermbg=None       cterm=Bold
-hi Ignore       ctermfg=220         ctermbg=None       cterm=Bold
-hi Underline    ctermfg=244         ctermbg=None       cterm=None
-hi ColorColumn  ctermfg=None        ctermbg=234        cterm=None
-hi String       ctermfg=244         ctermbg=None       cterm=None
-
-hi goFormatSpecifier ctermfg=248    ctermbg=None       cterm=None
-hi goBoolean         ctermfg=246    ctermbg=None       cterm=None
-hi goOperator        ctermfg=252    ctermbg=None       cterm=None
-hi goConditional     ctermfg=248    ctermbg=None       cterm=None
-
-hi FoldColumn	ctermfg=247         ctermbg=None       cterm=Bold
-hi StatusLineNC ctermfg=247         ctermbg=234        cterm=None
-hi StatusLine   ctermfg=247         ctermbg=233        cterm=Bold
-hi VertSplit    ctermfg=247         ctermbg=234        cterm=Bold
-
-hi LineNr	    ctermfg=238         ctermbg=None        cterm=Bold
-hi NonText	    ctermfg=87          ctermbg=None        cterm=Bold
-
-
-hi Pmenu        ctermfg=White       ctermbg=233        cterm=None
-hi PmenuSel     ctermfg=None        ctermbg=233        cterm=Bold
-hi PmenuSbar    ctermfg=DarkGray    ctermbg=233        cterm=None
-hi PmenuThumb   ctermfg=Gray        ctermbg=233        cterm=None
+hi ColorColumn       ctermfg=None   ctermbg=234    cterm=None
+hi Comment           ctermfg=249    ctermbg=None   cterm=None
+hi Constant          ctermfg=None   ctermbg=None   cterm=None
+hi DiffText          ctermfg=88     ctermbg=250    cterm=None
+hi Directory         ctermfg=None   ctermbg=None   cterm=None
+hi Error             ctermfg=124    ctermbg=None   cterm=None
+hi ErrorMsg          ctermfg=124    ctermbg=None   cterm=None
+hi FoldColumn        ctermfg=238    ctermbg=None   cterm=None
+hi Identifier        ctermfg=None   ctermbg=None   cterm=None
+hi Ignore            ctermfg=None   ctermbg=None   cterm=None
+hi LineNr            ctermfg=238    ctermbg=None   cterm=None
+hi NonText           ctermfg=238    ctermbg=None   cterm=None
+hi Normal            ctermfg=15     ctermbg=None   cterm=None
+hi Pmenu             ctermfg=255    ctermbg=None   cterm=None
+hi PmenuSbar         ctermfg=None   ctermbg=237    cterm=None
+hi PmenuSel          ctermfg=None   ctermbg=15     cterm=None
+hi PmenuThumb        ctermfg=None   ctermbg=237    cterm=None
+hi PreProc           ctermfg=None   ctermbg=None   cterm=None
+hi Search            ctermfg=190    ctermbg=None   cterm=None
+hi SignColumn        ctermfg=None   ctermbg=None   cterm=None
+hi Special           ctermfg=None   ctermbg=None   cterm=None
+hi SpecialKey        ctermfg=249    ctermbg=None   cterm=None
+hi Statement         ctermfg=None   ctermbg=None   cterm=None
+hi StatusLine        ctermfg=242    ctermbg=None   cterm=None
+hi StatusLineNC      ctermfg=242    ctermbg=None   cterm=None
+hi String            ctermfg=None   ctermbg=None   cterm=None
+hi TabLine           ctermfg=238    ctermbg=0      cterm=None
+hi TabLineFill       ctermfg=238    ctermbg=0      cterm=None
+hi TabLineSel        ctermfg=15     ctermbg=0      cterm=None
+hi Todo              ctermfg=214    ctermbg=None   cterm=None
+hi Type              ctermfg=None   ctermbg=None   cterm=None
+hi Underline         ctermfg=None   ctermbg=None   cterm=None
+hi VertSplit         ctermfg=238    ctermbg=None   cterm=None
 
 
 "vim: sw=4

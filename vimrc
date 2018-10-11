@@ -1,10 +1,10 @@
 "" {{{ main configuration
-syntax off
+syntax on
 set mouse=v
 set nobackup
 set ruler
 set showcmd
-set number
+set nonumber
 set hlsearch
 set smarttab
 set hidden
@@ -75,8 +75,8 @@ imap     <S-Insert> <MiddleMouse>
 
 
 " {{{ ale
-let g:ale_sign_error = 'e'
-let g:ale_sign_warning = 'w'
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'W'
 let g:ale_linters = {'go': ['go build', 'go vet']}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
