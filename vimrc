@@ -1,5 +1,5 @@
 "" {{{ main configuration
-syntax on
+syntax off
 set mouse=v
 set nobackup
 set ruler
@@ -49,12 +49,15 @@ filetype indent on
 
 autocmd BufNewFile         *                startinsert
 autocmd BufWritePre        *                :%s/\s\+$//e
-autocmd FileType python                     setl textwidth=79 colorcolumn=79 tabstop=4 shiftwidth=4 expandtab
+autocmd FileType python                     setl colorcolumn=79 tabstop=4 shiftwidth=4 expandtab
+autocmd FileType lua                        setl colorcolumn=79 tabstop=4 shiftwidth=4 expandtab
 autocmd FileType go                         setl colorcolumn=79 noexpandtab
 autocmd FileType markdown                   setl colorcolumn=79 tabstop=2 shiftwidth=4 expandtab spell spelllang=en_us
 autocmd FileType javascript                 setl colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
 autocmd FileType html,gohtmltmpl,htmldjango setl tabstop=2 shiftwidth=2 expandtab
 autocmd FileType make                       setl noexpandtab
+autocmd BufWritePre 	*.py 		    execute ':silent Black'
+"autocmd BufWritePre 	*.py 		    execute ':silent Isort'
 "}}}
 
 
@@ -77,7 +80,7 @@ imap     <S-Insert> <MiddleMouse>
 " {{{ ale
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
-let g:ale_linters = {'go': ['go build', 'go vet']}
+let g:ale_linters = {'go': ['gopls']}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:ale_set_loclist = 0
@@ -93,6 +96,8 @@ let g:go_fmt_command = "goimports"
 let g:go_play_open_browser = 0
 let g:go_def_mapping_enabled = 0
 let g:go_template_autocreate = 0
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 " }}}
 
 
@@ -103,6 +108,5 @@ let g:elm_format_autosave = 1
 set cm=blowfish2
 
 set shell=/bin/sh
-
 
 call pathogen#infect()
