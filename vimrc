@@ -1,6 +1,5 @@
-"" {{{ main configuration
+" {{{ common
 syntax off
-set mouse=v
 set nobackup
 set ruler
 set showcmd
@@ -24,9 +23,11 @@ set background=dark
 set backupdir=/tmp//
 set directory=/tmp//
 set undodir=/tmp//
-" }}}
+set cm=blowfish2
+set shell=/bin/sh
 
 colorscheme x
+" }}}
 
 " {{{ gui
 if has("gui_running")
@@ -41,26 +42,25 @@ if has("gui_running")
 endif
 " }}}
 
-
 " {{{ filetype related configuration
 filetype on
 filetype plugin on
 filetype indent on
 
-autocmd BufNewFile         *                startinsert
-autocmd BufWritePre        *                :%s/\s\+$//e
-autocmd FileType python                     setl colorcolumn=79 tabstop=4 shiftwidth=4 expandtab
-autocmd FileType lua                        setl colorcolumn=79 tabstop=4 shiftwidth=4 expandtab
-autocmd FileType go                         setl colorcolumn=79 noexpandtab
-autocmd FileType markdown                   setl colorcolumn=79 tabstop=2 shiftwidth=4 expandtab spell spelllang=en_us
-autocmd FileType javascript                 setl colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
-autocmd FileType html,gohtmltmpl,htmldjango setl tabstop=2 shiftwidth=2 expandtab
-autocmd FileType make                       setl noexpandtab
-autocmd BufWritePre 	*.py 		    execute ':silent Black'
-"autocmd BufWritePre 	*.py 		    execute ':silent Isort'
+augroup common
+	autocmd!
+
+	autocmd BufNewFile         *                startinsert
+	autocmd BufWritePre        *                :%s/\s\+$//e
+
+	autocmd FileType python                     setl textwidth=100 colorcolumn=79 tabstop=4 shiftwidth=4 expandtab
+	autocmd FileType go                         setl colorcolumn=79 noexpandtab
+	autocmd FileType markdown                   setl colorcolumn=79 tabstop=2 shiftwidth=4 expandtab spell spelllang=en_us
+	autocmd FileType javascript                 setl colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
+	autocmd FileType html,gohtmltmpl,htmldjango setl tabstop=2 shiftwidth=2 expandtab
+	autocmd FileType make                       setl noexpandtab
+augroup end
 "}}}
-
-
 
 " {{{ window move
 map      <C-j> <C-W>j
@@ -69,15 +69,7 @@ map      <C-h> <C-W>h
 map      <C-l> <C-W>l
 " }}}
 
-
-" {{{ mouse keys
-map      <S-Insert> <MiddleMouse>
-map!     <S-Insert> <MiddleMouse>
-imap     <S-Insert> <MiddleMouse>
-" }}}
-
-
-" {{{ ale
+" {{{ plugin: ale
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
 let g:ale_linters = {'go': ['gopls']}
@@ -86,27 +78,22 @@ let g:ale_lint_on_enter = 0
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_keep_list_window_open = 0
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 " }}}
 
-
-
-" {{{ go
+" {{{ plugin: go
 let g:go_highlight_extra_types = 0
 let g:go_fmt_command = "goimports"
 let g:go_play_open_browser = 0
 let g:go_def_mapping_enabled = 0
 let g:go_template_autocreate = 0
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
 " }}}
 
-
-" {{{ elm
+" {{{ plugin: elm
 let g:elm_format_autosave = 1
 " }}}
 
-set cm=blowfish2
-
-set shell=/bin/sh
-
-call pathogen#infect()
+" {{{ plugin: python
+let g:black_virtualenv = "~/.python_black"
+" }}}
