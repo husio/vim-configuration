@@ -1,0 +1,6 @@
+[submodule "pack/gitmodules/start/ale"]
+	path = pack/gitmodules/start/ale
+	url = https://github.com/dense-analysis/ale.git
+[submodule "pack/gitmodules/start/go"]
+	path = pack/gitmodules/start/go
+	url = https://github.com/fatih/vim-go.git
