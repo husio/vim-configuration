@@ -4,3 +4,6 @@
 [submodule "pack/gitmodules/start/go"]
 	path = pack/gitmodules/start/go
 	url = https://github.com/fatih/vim-go.git
+[submodule "pack/elm/start/elm"]
+	path = pack/elm/start/elm
+	url = https://github.com/ElmCast/elm-vim.git
