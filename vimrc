@@ -80,6 +80,9 @@ let g:ale_set_quickfix = 1
 let g:ale_keep_list_window_open = 0
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+" disable highlight because we do not use syntax
+let g:go_highlight_diagnostic_errors=0
+let g:go_highlight_diagnostic_warnings=0
 " }}}
 
 " {{{ plugin: go
