@@ -14,4 +14,4 @@ dependencies, so make sure to fetch those as well.
 
 To upgrade managed as git submodules plugins run
 
-    $ git submodule update --remote
+    $ make up
