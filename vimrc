@@ -26,7 +26,7 @@ set undodir=/tmp//
 set cm=blowfish2
 set shell=/bin/sh
 
-colorscheme x
+colorscheme mono
 " }}}
 
 " {{{ gui
