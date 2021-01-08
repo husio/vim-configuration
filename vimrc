@@ -18,7 +18,6 @@ set foldlevelstart=0
 set laststatus=2
 set timeoutlen=400
 set tags+=.tags
-set scrolljump=10
 set background=dark
 set backupdir=/tmp//
 set directory=/tmp//
@@ -59,6 +58,7 @@ augroup common
 	autocmd FileType javascript                 setl colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
 	autocmd FileType html,gohtmltmpl,htmldjango setl tabstop=2 shiftwidth=2 expandtab
 	autocmd FileType make                       setl noexpandtab
+	autocmd FileType sh 			    :let b:ale_fix_on_save = 1
 augroup end
 "}}}
 
@@ -78,12 +78,12 @@ let g:ale_lint_on_enter = 0
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_keep_list_window_open = 0
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-" disable highlight because we do not use syntax
-let g:go_highlight_diagnostic_errors=0
-let g:go_highlight_diagnostic_warnings=0
+let g:ale_fixers = {
+			\'sh': ['shfmt'],
+			\}
+let g:ale_sh_shfmt_options = '-i 2'
 " }}}
+
 
 " {{{ plugin: go
 let g:go_highlight_extra_types = 0
@@ -91,6 +91,11 @@ let g:go_fmt_command = "goimports"
 let g:go_play_open_browser = 0
 let g:go_def_mapping_enabled = 0
 let g:go_template_autocreate = 0
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+" disable highlight because we do not use syntax
+let g:go_highlight_diagnostic_errors=0
+let g:go_highlight_diagnostic_warnings=0
 " }}}
 
 " {{{ plugin: elm
@@ -99,4 +104,10 @@ let g:elm_format_autosave = 1
 
 " {{{ plugin: python
 let g:black_virtualenv = "~/.python_black"
+" }}}
+
+" {{{ plugin: rust
+let g:rustfmt_autosave = 1
+let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1
 " }}}
