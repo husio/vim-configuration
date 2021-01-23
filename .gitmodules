@@ -4,3 +4,12 @@
 [submodule "pack/gitmodules/start/go"]
 	path = pack/gitmodules/start/go
 	url = https://github.com/fatih/vim-go.git
+[submodule "pack/gitmodules/start/erlang-omnicomplete"]
+	path = pack/gitmodules/start/erlang-omnicomplete
+	url = https://github.com/vim-erlang/vim-erlang-omnicomplete.git
+[submodule "pack/gitmodules/start/erlang-compiler"]
+	path = pack/gitmodules/start/erlang-compiler
+	url = https://github.com/vim-erlang/vim-erlang-compiler.git
+[submodule "pack/gitmodules/start/erlang-runtime"]
+	path = pack/gitmodules/start/erlang-runtime
+	url = https://github.com/vim-erlang/vim-erlang-runtime.git
