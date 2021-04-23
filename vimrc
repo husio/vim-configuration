@@ -28,19 +28,6 @@ set shell=/bin/sh
 colorscheme mono
 " }}}
 
-" {{{ gui
-if has("gui_running")
-    set guioptions-=r
-    set guioptions-=L
-    set guioptions-=T
-    set guioptions-=m
-    set guioptions-=e
-    set guifont=terminus\ 8
-    colorscheme desert
-    set mousehide
-endif
-" }}}
-
 " {{{ filetype related configuration
 filetype on
 filetype plugin on
@@ -50,7 +37,7 @@ augroup common
 	autocmd!
 
 	autocmd BufNewFile         *                startinsert
-	autocmd BufWritePre        *                :%s/\s\+$//e
+	autocmd BufWritePre        *                %s/\s\+$//e
 
 	autocmd FileType python                     setl textwidth=100 colorcolumn=79 tabstop=4 shiftwidth=4 expandtab
 	autocmd FileType go                         setl colorcolumn=79 noexpandtab
@@ -58,16 +45,10 @@ augroup common
 	autocmd FileType javascript                 setl colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
 	autocmd FileType html,gohtmltmpl,htmldjango setl tabstop=2 shiftwidth=2 expandtab
 	autocmd FileType make                       setl noexpandtab
-	autocmd FileType sh 			    :let b:ale_fix_on_save = 1
+	autocmd FileType sh 			    let b:ale_fix_on_save = 1
 augroup end
 "}}}
 
-" {{{ window move
-map      <C-j> <C-W>j
-map      <C-k> <C-W>k
-map      <C-h> <C-W>h
-map      <C-l> <C-W>l
-" }}}
 
 " {{{ plugin: ale
 let g:ale_sign_error = 'E'
