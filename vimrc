@@ -37,7 +37,6 @@ augroup common
 	autocmd!
 
 	autocmd BufNewFile         *                startinsert
-	autocmd BufWritePre        *                %s/\s\+$//e
 
 	autocmd FileType python                     setl textwidth=100 colorcolumn=79 tabstop=4 shiftwidth=4 expandtab
 	autocmd FileType go                         setl colorcolumn=79 noexpandtab
@@ -45,7 +44,6 @@ augroup common
 	autocmd FileType javascript                 setl colorcolumn=100 tabstop=2 shiftwidth=2 expandtab
 	autocmd FileType html,gohtmltmpl,htmldjango setl tabstop=2 shiftwidth=2 expandtab
 	autocmd FileType make                       setl noexpandtab
-	autocmd FileType sh 			    let b:ale_fix_on_save = 1
 augroup end
 "}}}
 
@@ -53,16 +51,19 @@ augroup end
 " {{{ plugin: ale
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
-"let g:ale_linters = {'go': ['gopls']}
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_keep_list_window_open = 0
+"let g:ale_lint_on_enter = 0
+"let g:ale_set_loclist = 0
+"let g:ale_set_quickfix = 1
+"let g:ale_keep_list_window_open = 0
 let g:ale_fixers = {
-			\'sh': ['shfmt'],
-			\}
+\ 	'*': ['remove_trailing_lines', 'trim_whitespace'],
+\	'sh': ['shfmt'],
+\	}
+"let g:ale_linters = {'go': ['gopls']}
+let g:ale_fix_on_save = 1
 let g:ale_sh_shfmt_options = '-i 2'
+let g:ale_lint_delay = 500
 " }}}
 
 
