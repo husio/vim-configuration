@@ -59,6 +59,7 @@ let g:ale_set_quickfix = 0
 let g:ale_fixers = {
 \ 	'*': ['remove_trailing_lines', 'trim_whitespace'],
 \	'sh': ['shfmt'],
+\       'python': ['black'],
 \	}
 let g:ale_linters = {'
 \       go': ['gofmt', 'gopls', 'govet'],
@@ -85,10 +86,6 @@ let g:go_highlight_diagnostic_warnings=0
 
 " {{{ plugin: elm
 let g:elm_format_autosave = 1
-" }}}
-
-" {{{ plugin: python
-let g:black_virtualenv = "~/.python_black"
 " }}}
 
 " {{{ plugin: rust
