@@ -83,13 +83,3 @@ let g:go_info_mode='gopls'
 let g:go_highlight_diagnostic_errors=0
 let g:go_highlight_diagnostic_warnings=0
 " }}}
-
-" {{{ plugin: elm
-let g:elm_format_autosave = 1
-" }}}
-
-" {{{ plugin: rust
-let g:rustfmt_autosave = 1
-let g:racer_experimental_completer = 1
-let g:racer_insert_paren = 1
-" }}}
