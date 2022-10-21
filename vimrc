@@ -45,6 +45,7 @@ augroup common
 	autocmd FileType html,gohtmltmpl,htmldjango setl tabstop=2 shiftwidth=2 expandtab
 	autocmd FileType make                       setl noexpandtab
 	autocmd FileType mail                       setl spell nonumber
+	autocmd FileType yaml                       setl ts=2 sts=2 sw=2 expandtab
 augroup end
 "}}}
 
