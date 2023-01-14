@@ -11,6 +11,10 @@ if exists("syntax_on")
   syntax reset
 endif
 
+hi ALEVirtualTextError    ctermfg=160    ctermbg=None     cterm=None
+hi ALEVirtualTextWarning  ctermfg=178    ctermbg=None     cterm=None
+hi ALEVirtualTextWarning  ctermfg=19     ctermbg=None     cterm=None
+
 hi ColorColumn       ctermfg=None   ctermbg=234    cterm=None
 hi Comment           ctermfg=249    ctermbg=None   cterm=None
 hi Constant          ctermfg=None   ctermbg=None   cterm=None
