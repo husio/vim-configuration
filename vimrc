@@ -46,8 +46,13 @@ augroup common
 	autocmd FileType make                       setl noexpandtab
 	autocmd FileType mail                       setl spell nonumber
 	autocmd FileType yaml                       setl ts=2 sts=2 sw=2 expandtab
+
+	nnoremap <silent> <Leader>in   <Cmd>ALEHover<CR>
+	nnoremap <silent> <Leader>re   <Cmd>ALERename<CR>
+	nnoremap <silent> <Leader>gd   <Cmd>ALEGoToDefinition<CR>
 augroup end
 "}}}
+
 
 
 " {{{ plugin: ale
@@ -55,9 +60,9 @@ let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 0
+let g:ale_set_quickfix = 1
 let g:ale_linters = {
-\       'go': ['gopls', 'gofmt'],
+\       'go': ['gopls'],
 \       }
 let g:ale_fixers = {
 \ 	'*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -67,6 +72,8 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 let g:ale_sh_shfmt_options = '-i 2'
 let g:ale_lint_delay = 750
+let g:ale_floating_preview = 1
+let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
 " }}}
 
 
