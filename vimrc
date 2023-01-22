@@ -16,7 +16,7 @@ set fileencodings=utf-8
 set foldmethod=marker
 set foldlevelstart=0
 set laststatus=2
-set timeoutlen=400
+set timeoutlen=600
 set tags+=.tags
 set background=dark
 set backupdir=/tmp//
@@ -47,7 +47,7 @@ augroup common
 	autocmd FileType mail                       setl spell nonumber
 	autocmd FileType yaml                       setl ts=2 sts=2 sw=2 expandtab
 
-	nnoremap <silent> <Leader>in   <Cmd>ALEHover<CR>
+	nnoremap <silent> <Leader>doc  <Cmd>ALEHover<CR>
 	nnoremap <silent> <Leader>re   <Cmd>ALERename<CR>
 	nnoremap <silent> <Leader>gd   <Cmd>ALEGoToDefinition<CR>
 augroup end
