@@ -1,3 +1,8 @@
+> [!CAUTION]
+> I have switched to Neovim and lua configuration hosted on codebeg.
+> https://codeberg.org/ph/neovim
+
+
 ## Installation
 
 
